@@ -1,0 +1,21 @@
+# top-most EditorConfig file
+root = true
+
+[*]
+charset = utf-8
+# unit line endings
+end_of_line = lf
+# add newline to end
+insert_final_newline = true
+# trim white space
+trim_trailing_whitespace = true
+
+[*.{js,html,css,styl}]
+indent_style = tab
+indent_size = 1
+
+[*.md]
+indent_style = tab
+indent_size = 1
+trim_trailing_whitespace = false
+
