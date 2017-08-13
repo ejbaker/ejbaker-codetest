@@ -12,9 +12,9 @@ import <%= name %>Component from "./<%= name %>.component";
 const <%= name %>Module = angular.module("<%= name %>", [
 	uiRouter,
 ])
-
+	// add component
 	.component("<%= name %>", <%= name %>Component)
-
+	// name
 	.name;
 
 

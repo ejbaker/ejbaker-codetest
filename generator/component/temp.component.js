@@ -1,5 +1,6 @@
-// CONTROLLER
+// DEPENDENCIES
 // =============================================================================
+// APP ----------------------------------
 import template from "./<%= name %>.html";
 import controller from "./<%= name %>.controller";
 import "./<%= name %>.scss";

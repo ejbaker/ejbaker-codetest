@@ -9,7 +9,7 @@ import { get, save } from "./methods";
 
 // SERVICE
 // =============================================================================
-export default class Store {
+class Store {
 	/**
 	 * @constructor
 	 * @param {string} STORAGE_KEY
@@ -130,3 +130,7 @@ export default class Store {
 		return Promise.resolve(data);
 	}
 }
+
+// EXPORT
+// =============================================================================
+export default Store;

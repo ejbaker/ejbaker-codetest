@@ -6,6 +6,9 @@ import uiRouter from "angular-ui-router";
 // APP ----------------------------------
 import aboutComponent from "./about.component";
 
+
+// MODULE
+// =============================================================================
 const aboutModule = angular.module("about", [
 	uiRouter,
 ])
@@ -24,4 +27,7 @@ const aboutModule = angular.module("about", [
 	// name
 	.name;
 
+
+// EXPORT
+// =============================================================================
 export default aboutModule;

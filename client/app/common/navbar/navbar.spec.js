@@ -1,14 +1,77 @@
+// DEPENDENCIES
+// =============================================================================
+// APP ----------------------------------
 import NavbarModule from "./navbar";
 
+
+// PROPERTIES
+// =============================================================================
+let $rootScope;
+let $state;
+let $location;
+let $componentController;
+let $compile;
+// controller specs
+let controller;
+// view layer specs.
+let scope;
+let template;
+
+
+// METHODS
+// =============================================================================
+// BEFORE AND AFTER ----------------------------------
+
+/**
+ * Tests the controller - before each.
+ *
+ * @method ctrlHasName
+ */
+function ctrlBeforeEach() {
+	controller = $componentController("navbar", {
+		$scope: $rootScope.$new(),
+	});
+}
+
+/**
+ * Tests the view - before each.
+ *
+ * @method viewBeforeEach
+ */
+function viewBeforeEach() {
+	scope = $rootScope.$new();
+	template = $compile("<navbar></navbar>")(scope);
+	scope.$apply();
+}
+
+
+// MAIN ----------------------------------
+
+/**
+ * Tests the controller - has name.
+ *
+ * @method ctrlHasName
+ */
+function ctrlHasName() {
+	expect(controller).to.have.property("name");
+}
+
+/**
+ * Tests the view - has template.
+ *
+ * @method viewHasTemplate
+ */
+function viewHasTemplate() {
+	expect(template.find("h1").find("a").html()).to.equal("home");
+}
+
+
+// TESTS
+// =============================================================================
 describe("Navbar", () => {
-	let $rootScope;
-	let $state;
-	let $location;
-	let $componentController;
-	let $compile;
-
+	// before each
 	beforeEach(window.module(NavbarModule));
-
+	// inject dependencies
 	beforeEach(inject(($injector) => {
 		$rootScope = $injector.get("$rootScope");
 		$componentController = $injector.get("$componentController");
@@ -16,38 +79,22 @@ describe("Navbar", () => {
 		$location = $injector.get("$location");
 		$compile = $injector.get("$compile");
 	}));
-
+	// module
 	describe("Module", () => {
 		// top-level specs: i.e., routes, injection, naming
 	});
-
+	// controller
 	describe("Controller", () => {
-		// controller specs
-		let controller;
-		beforeEach(() => {
-			controller = $componentController("navbar", {
-				$scope: $rootScope.$new(),
-			});
-		});
-
-		it("has a name property", () => { // erase if removing this.name from the controller
-			expect(controller).to.have.property("name");
-		});
+		// before each
+		beforeEach(ctrlBeforeEach);
+		// name
+		it("has a name property", ctrlHasName);
 	});
-
+	// view
 	describe("View", () => {
-		// view layer specs.
-		let scope;
-		let template;
-
-		beforeEach(() => {
-			scope = $rootScope.$new();
-			template = $compile("<navbar></navbar>")(scope);
-			scope.$apply();
-		});
-
-		it("has name in template", () => {
-			expect(template.find("h1").find("a").html()).to.equal("home");
-		});
+		// before each
+		beforeEach(viewBeforeEach);
+		// template works
+		it("has name in template", viewHasTemplate);
 	});
 });

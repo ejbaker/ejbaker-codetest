@@ -1,3 +1,6 @@
+// DEPENDENCIES
+// =============================================================================
+// APP ----------------------------------
 import <%= upCaseName %>Module from "./<%= name %>";
 import <%= upCaseName %>Controller from "./<%= name %>.controller";
 import <%= upCaseName %>Component from "./<%= name %>.component";
@@ -8,7 +11,6 @@ import <%= upCaseName %>Template from "./<%= name %>.html";
 // =============================================================================
 let $rootScope;
 let makeController;
-// component/directive specs
 const component = <%= upCaseName %>Component;
 
 
