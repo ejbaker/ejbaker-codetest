@@ -2,7 +2,7 @@
 // =============================================================================
 // THIRD-PARTY ----------------------------------
 // lodash
-import { find, isEmpty, remove } from "lodash";
+import { find, includes, isEmpty, isString, remove } from "lodash";
 // APP ----------------------------------
 // local storage methods
 import { get, save } from "./methods";
@@ -106,20 +106,24 @@ export default class Store {
 	 * Remove a resource.
 	 *
 	 * @method remove
-	 * @param {string} resourceId
+	 * @param {array} resourceIds
 	 * @returns {promise}
 	 */
-	remove(resourceId) {
+	remove(resourceIds) {
+		// ensure array
+		if (isString(resourceIds)) {
+			resourceIds = [resourceIds];
+		}
 		// attempt to get data from storage
 		const data = this._list();
 		// error check
-		const existingData = find(data, datum => (datum.id === resourceId));
+		const existingData = find(data, datum => (includes(resourceIds, datum.id)));
 		// make sure data exists
-		if (!existingData) {
+		if (isEmpty(existingData)) {
 			return Promise.reject("No resource with that ID!");
 		}
 		// otherwise, remove...
-		remove(data, datum => (datum.id === resourceId));
+		remove(data, datum => (includes(resourceIds, datum.id)));
 		// save...
 		this._save(data);
 		// and return promise
