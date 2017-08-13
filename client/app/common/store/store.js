@@ -2,22 +2,24 @@
 // =============================================================================
 // THIRD-PARTY ----------------------------------
 import angular from "angular";
-import uiRouter from "angular-ui-router";
+import AngularUUID from "angular-uuid"; // eslint-disable-line no-unused-vars
 // APP ----------------------------------
-import navbarComponent from "./navbar.component";
+import StoreService from "./store.service";
 
 
 // MODULE
 // =============================================================================
-const navbarModule = angular.module("navbar", [
-	uiRouter,
+const storeModule = angular.module("store", [
+	"angular-uuid",
 ])
-	// add component
-	.component("navbar", navbarComponent)
+	// storage key constant
+	.constant("STORAGE_KEY", "ejbaker-codetest-resources")
+	// service
+	.service("Store", StoreService)
 	// name
 	.name;
 
 
 // EXPORT
 // =============================================================================
-export default navbarModule;
+export default storeModule;

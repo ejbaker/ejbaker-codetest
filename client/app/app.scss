@@ -1,7 +1,23 @@
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css");
 @import "common/common";
 
-.app {
+// force actual 100% height
+html {
 	height: 100%;
+}
+body {
+	height: auto;
+	min-height: 100%;
+}
+
+// basic, shared styling
+body {
+	font-family: "Roboto", sans-serif;
+	color: $lightTextColor;
 	background-color: $lightBgColor;
+}
+
+// app container
+.app {
 }
 

@@ -1,3 +1,5 @@
+
+
 import gulp from "gulp";
 import webpack from "webpack";
 import path from "path";
@@ -18,13 +20,9 @@ import historyApiFallback from "connect-history-api-fallback";
 const root = "client";
 
 // helper method for resolving paths
-const resolveToApp = (glob = "") =>
-	path.join(root, "app", glob) // app/{glob}
-;
+const resolveToApp = (glob = "") => path.join(root, "app", glob); // app/{glob}
 
-const resolveToComponents = (glob = "") =>
-	path.join(root, "app/components", glob) // app/components/{glob}
-;
+const resolveToComponents = (glob = "") => path.join(root, "app/components", glob); // app/components/{glob}
 
 // map of all paths
 const paths = {
@@ -71,7 +69,6 @@ gulp.task("serve", () => {
 		"webpack-hot-middleware/client?reload=true",
 		// application entry point
 	].concat(paths.entry);
-
 	const compiler = webpack(config);
 
 	serve({
@@ -96,7 +93,7 @@ gulp.task("serve", () => {
 gulp.task("watch", ["serve"]);
 
 gulp.task("component", () => {
-	const cap = val => val.charAt(0).toUpperCase() + val.slice(1);
+	const cap = val => (val.charAt(0).toUpperCase() + val.slice(1));
 	const name = yargs.argv.name;
 	const parentPath = yargs.argv.parent || "";
 	const destPath = path.join(resolveToComponents(), parentPath, name);
@@ -107,7 +104,7 @@ gulp.task("component", () => {
 			upCaseName: cap(name),
 		}))
 		.pipe(rename((currPath) => {
-			currPath.basename = path.basename.replace("temp", name);
+			currPath.basename = currPath.basename.replace("temp", name);
 		}))
 		.pipe(gulp.dest(destPath));
 });

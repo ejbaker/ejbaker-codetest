@@ -6,10 +6,6 @@ module.exports = {
 	devtool: "source-map",
 	entry: {},
 	module: {
-		preLoaders: [
-			// Javascript
-			{ test: /\.jsx?$/, loader: "eslint", exclude: /node_modules/ },
-		],
 		loaders: [
 			{ test: /\.js$/, exclude: [/app\/lib/, /node_modules/], loader: "ng-annotate!babel" },
 			{ test: /\.html$/, loader: "raw" },
@@ -27,9 +23,8 @@ module.exports = {
 			hash: true,
 		}),
 
-		// Automatically move all modules defined outside of application directory
-		// to vendor bundle. If you are using more complicated project structure, 
-		// consider to specify common chunks manually.
+		// Automatically move all modules defined outside of application directory 
+		// to vendor bundle.
 		new webpack.optimize.CommonsChunkPlugin({
 			name: "vendor",
 			// eslint-disable-next-line no-unused-vars

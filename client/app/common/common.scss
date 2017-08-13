@@ -1,18 +1,22 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto);
 
-$primaryColor:   #0277bd;
-$accentColor:    #1de9b6;
-$bgColor:        #efefef;
-$darkBgColor:    #263238;
-$lightBgColor:   #37474f;
-$lightTextColor: #f5f5f5;
-$darkTextColor:  #212121;
+$gray-base:              #000 !default;
+$gray-darker:            lighten($gray-base, 13.5%) !default; // #222
+$gray-dark:              lighten($gray-base, 20%) !default;   // #333
+$gray:                   lighten($gray-base, 33.5%) !default; // #555
+$gray-light:             lighten($gray-base, 46.7%) !default; // #777
+$gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
 
-body {
-	height: 100%;
-	// browsers default to 16px for font-size,
-	// so setting top-level font-size to 62.5%
-	// scales 1rem to equal 10px.
-	font: 62.5% 'Roboto', sans-serif;
-}
+$brand-primary:         darken(#428bca, 6.5%) !default; // #337ab7
+$brand-success:         #5cb85c !default;
+$brand-info:            #5bc0de !default;
+$brand-warning:         #f0ad4e !default;
+$brand-danger:          #d9534f !default;
 
+$primaryColor: lighten($brand-primary, 20%);
+$accentColor:   $brand-success;
+$bgColor:       darken(#fff, 20%) !default;
+$darkBgColor:    $gray-darker;
+$lightBgColor:  $gray-dark;
+$lightTextColor: darken(#fff, 13.5%) !default;
+$darkTextColor: darken($gray-darker, 13.5%) !default;
