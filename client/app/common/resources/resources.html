@@ -1,0 +1,7 @@
+<div>
+	<add-resource></add-resource>
+	<div>
+		<div ng-if="!$ctrl.items.length">No resources have been added yet!</div>
+		<resource ng-repeat="item in $ctrl.items track by item.id | orderBy:['type', 'name']" item="item"></resource>
+	</div>
+</div>

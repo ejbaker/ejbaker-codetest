@@ -1,0 +1,11 @@
+<div>
+	<h1>{{ $ctrl.name }}</h1>
+	<button ng-click="$ctrl.editing = !$ctrl.editing">{{ $ctrl.editing ? 'Cancel' : 'Edit Resource' }}</button>
+	<form ng-show="$ctrl.editing" ng-submit="$ctrl.onSubmit()" name="$ctrl.form" novalidate>
+		<formly-form model="$ctrl.model" fields="$ctrl.fields" options="$ctrl.options" form="$ctrl.form">
+			<button type="submit" class="btn btn-primary submit-button" ng-disabled="$ctrl.form.$invalid">Submit</button>
+			<button type="button" class="btn btn-default" ng-click="$ctrl.options.resetModel()">Reset</button>
+		</formly-form>
+	</form>
+</div>
+	
