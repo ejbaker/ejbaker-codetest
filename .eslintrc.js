@@ -17,6 +17,14 @@ module.exports = {
 		jasmine: true,
 		mocha: true,
 	},
+	// settings
+	settings: {
+		"import/resolver": {
+			webpack: {
+				config: "webpack.dev.config",
+			},
+		},
+	},
 	// overrides
 	rules: {
 		// allow dev dependency import (webpack)
