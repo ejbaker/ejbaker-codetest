@@ -9,7 +9,9 @@ import "./home.scss";
 // COMPONENT
 // =============================================================================
 const homeComponent = {
-	bindings: {},
+	bindings: {
+		items: "<",
+	},
 	template,
 	controller,
 };

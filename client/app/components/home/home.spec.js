@@ -1,12 +1,15 @@
+/* eslint-disable no-unused-expressions */
+
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
-import HomeModule from "./home";
+import HomeModule from "Comp/home";
 
 
 // PROPERTIES
 // =============================================================================
 
+let Store;
 let $rootScope;
 let $state;
 let $location;
@@ -56,7 +59,7 @@ function viewBeforeEach() {
 function moduleExists() {
 	$location.url("/");
 	$rootScope.$digest();
-	expect($state.current.component).to.eq("home");
+	expect($state.current.component).to.equal("home");
 }
 
 /**
@@ -74,7 +77,7 @@ function ctrlHasName() {
  * @method viewHasTemplate
  */
 function viewHasTemplate() {
-	expect(template.find("h1").html()).to.eq("Found in home.html");
+	expect(template.find("h1").html()).to.equal("home");
 }
 
 
@@ -86,6 +89,7 @@ describe("Home", () => {
 	beforeEach(window.module(HomeModule));
 	// inject dependencies
 	beforeEach(inject(($injector) => {
+		Store = $injector.get("Store");
 		$rootScope = $injector.get("$rootScope");
 		$componentController = $injector.get("$componentController");
 		$state = $injector.get("$state");

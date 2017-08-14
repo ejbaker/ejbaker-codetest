@@ -1,7 +1,7 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
-import NavbarModule from "./navbar";
+import NavbarModule from "Common/navbar";
 
 
 // PROPERTIES

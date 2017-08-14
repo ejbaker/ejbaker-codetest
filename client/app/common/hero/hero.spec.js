@@ -1,10 +1,10 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
-import HeroModule from "./hero";
-import HeroController from "./hero.controller";
-import HeroComponent from "./hero.component";
-import HeroTemplate from "./hero.html";
+import HeroModule from "Common/hero";
+import HeroController from "Common/hero/hero.controller";
+import HeroComponent from "Common/hero/hero.component";
+import HeroTemplate from "Common/hero/hero.html";
 
 // PROPERTIES
 // =============================================================================

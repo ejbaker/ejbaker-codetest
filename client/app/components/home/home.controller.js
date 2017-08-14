@@ -3,9 +3,13 @@
 class HomeController {
 	/**
 	 * @constructor
+	 * @param {object} Store
 	 */
-	constructor() {
+	constructor(Store) {
+		"ngInject";
+
 		this.name = "home";
+		// the resources, resolved on the route
 	}
 }
 

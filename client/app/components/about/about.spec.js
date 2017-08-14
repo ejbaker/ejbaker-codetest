@@ -1,7 +1,7 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
-import AboutModule from "./about";
+import AboutModule from "Comp/about";
 
 
 // PROPERTIES
@@ -56,7 +56,7 @@ function viewBeforeEach() {
 function moduleExists() {
 	$location.url("/about");
 	$rootScope.$digest();
-	expect($state.current.component).to.eq("about");
+	expect($state.current.component).to.equal("about");
 }
 
 /**
@@ -74,7 +74,7 @@ function ctrlHasName() {
  * @method viewHasTemplate
  */
 function viewHasTemplate() {
-	expect(template.find("h1").html()).to.eq("about");
+	expect(template.find("h1").html()).to.equal("about");
 }
 
 

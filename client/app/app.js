@@ -5,8 +5,8 @@ import angular from "angular";
 import uiRouter from "angular-ui-router";
 import angularFormly from "angular-formly";
 // APP ----------------------------------
-import Common from "./common/common";
-import Components from "./components/components";
+import Common from "Common";
+import Components from "Comp";
 import AppComponent from "./app.component";
 import "normalize.css";
 

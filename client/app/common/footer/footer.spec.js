@@ -1,10 +1,10 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
-import FooterModule from "./footer";
-import FooterController from "./footer.controller";
-import FooterComponent from "./footer.component";
-import FooterTemplate from "./footer.html";
+import FooterModule from "Common/footer";
+import FooterController from "Common/footer/footer.controller";
+import FooterComponent from "Common/footer/footer.component";
+import FooterTemplate from "Common/footer/footer.html";
 
 // PROPERTIES
 // =============================================================================

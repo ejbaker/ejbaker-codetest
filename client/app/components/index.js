@@ -3,8 +3,8 @@
 // THIRD-PARTY ----------------------------------
 import angular from "angular";
 // APP ----------------------------------
-import Home from "./home/home";
-import About from "./about/about";
+import Home from "Comp/home";
+import About from "Comp/about";
 
 
 // COMPONENT

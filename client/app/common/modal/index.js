@@ -2,34 +2,22 @@
 // =============================================================================
 // THIRD-PARTY ----------------------------------
 import angular from "angular";
-import uiRouter from "angular-ui-router";
+import modal from "angular-ui-bootstrap/src/modal";
 // APP ----------------------------------
-import homeComponent from "./home.component";
+import modalFactory from "Common/modal/modal.factory";
 
 
 // MODULE
 // =============================================================================
-const homeModule = angular.module("home", [
-	uiRouter,
+const modalModule = angular.module("modal", [
+	modal,
 ])
-	// config
-	.config(($stateProvider, $urlRouterProvider) => {
-		"ngInject";
-
-		$urlRouterProvider.otherwise("/");
-
-		$stateProvider
-			.state("home", {
-				url: "/",
-				component: "home",
-			});
-	})
-	// add component
-	.component("home", homeComponent)
+	// add factory
+	.factory("modal", modalFactory)
 	// name
 	.name;
 
 
 // EXPORT
 // =============================================================================
-export default homeModule;
+export default modalModule;
