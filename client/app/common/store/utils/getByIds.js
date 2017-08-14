@@ -1,27 +1,20 @@
 // DEPENDENCIES
 // =============================================================================
-import { isString } from "lodash";
+import { find, includes } from "lodash";
 
 
 // METHODS
 // =============================================================================
 
 /**
- * Get from localstorage.
+ * Get by name.
  *
  * @method get
- * @param {object} window
- * @param {string} key
+ * @param {string} name
+ * @param {array} data
  */
-function get(window, key) {
-	// get data
-	const data = window.localStorage.getItem(key);
-	// no need to parse data
-	if (!isString(data)) {
-		return data;
-	}
-	// otherwise, parse it
-	return JSON.parse(data);
+function get(ids, data) {
+	return find(data, datum => (includes(ids, datum.id)));
 }
 
 

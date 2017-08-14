@@ -2,10 +2,11 @@
 // =============================================================================
 // THIRD-PARTY ----------------------------------
 // lodash
-import { find, includes, isEmpty, isString, remove } from "lodash";
+import { isEmpty, isString } from "lodash";
 // APP ----------------------------------
 // local storage methods
-import { get, save } from "./methods";
+import { list as listResources, save } from "./local";
+import { getByIds, getByName, removeByIds } from "./utils";
 
 // SERVICE
 // =============================================================================
@@ -24,20 +25,9 @@ class Store {
 		this._uuid = uuid;
 		this._STORAGE_KEY = STORAGE_KEY;
 
-		// METHODS ----------------------------------
-		// get
-		this._list = () => {
-			// attempt to get data from storage
-			let data = get(this._$window, this._STORAGE_KEY);
-			// the user hasn't added any data yet!
-			if (isEmpty(data)) {
-				data = [];
-			}
-			// return data
-			return data;
-		};
-		// save
-		this._save = data => save(this._$window, this._STORAGE_KEY, data);
+		// PROPERTIES ----------------------------------
+		// data
+		this._resources = listResources(this._$window, this._STORAGE_KEY);
 	}
 
 	/**
@@ -48,7 +38,24 @@ class Store {
 	 */
 	list() {
 		// return the data
-		return Promise.resolve(this._list());
+		return Promise.resolve(this._resources);
+	}
+
+	/**
+	 * Get an individual resource by ID.
+	 *
+	 * @method get
+	 * @param {string} resourceId
+	 */
+	get(resourceId) {
+		// get the data
+		const existingData = this._get(resourceId);
+		// make sure data exists
+		if (!existingData) {
+			return Promise.reject("No resource with that ID!");
+		}
+		// otherwise
+		return Promise.resolve(existingData);
 	}
 
 	/**
@@ -59,47 +66,44 @@ class Store {
 	 * @returns {promise}
 	 */
 	add(resource) {
-		// attempt to get data from storage
-		const data = this._list();
 		// error check
-		if (find(data, datum => (datum.name === resource.name))) {
+		if (getByName(resource.name, this._resources)) {
 			return Promise.reject("Resource exists!");
 		}
 		// otherwise, add uuid...
 		resource.id = this._uuid.v4();
-		// resource.id = new Date().toISOString;
-		// and add to data
+		// get data...
+		const data = this._resources;
+		// and add to data...
 		data.push(resource);
 		// save...
-		this._save(data);
+		save(this._$window, this._STORAGE_KEY, data);
 		// and return promise
-		return Promise.resolve(data);
+		return Promise.resolve(this._resources);
 	}
 
 	/**
 	 * Update a resource.
 	 *
-	 * @method update
+	 * @method edit
 	 * @param {object} resource
 	 * @returns {promise}
 	 */
-	update(resource) {
-		// attempt to get data from storage
-		const data = this._list();
-		// error check
-		const existingData = find(data, datum => (datum.id === resource.id));
+	edit(resource) {
+		// get the data
+		const data = this._resources;
+		// get index of resource
+		const index = data.findIndex((datum => datum.id === resource.id));
 		// make sure data exists
-		if (!existingData) {
+		if (!(index > -1)) {
 			return Promise.reject("No resource with that ID!");
 		}
-		// otherwise, remove...
-		remove(data, datum => (datum.id === resource.id));
-		// add back...
-		data.push(resource);
+		// otherwise, update data...
+		data[index] = resource;
 		// save...
-		this._save(data);
+		save(this._$window, this._STORAGE_KEY, data);
 		// and return promise
-		return Promise.resolve(data);
+		return Promise.resolve(this._resources);
 	}
 
 	/**
@@ -114,20 +118,16 @@ class Store {
 		if (isString(resourceIds)) {
 			resourceIds = [resourceIds];
 		}
-		// attempt to get data from storage
-		const data = this._list();
 		// error check
-		const existingData = find(data, datum => (includes(resourceIds, datum.id)));
+		const existingData = getByIds(resourceIds, this._resources);
 		// make sure data exists
 		if (isEmpty(existingData)) {
 			return Promise.reject("No resource with that ID!");
 		}
-		// otherwise, remove...
-		remove(data, datum => (includes(resourceIds, datum.id)));
 		// save...
-		this._save(data);
+		save(this._$window, this._STORAGE_KEY, removeByIds(resourceIds, this._resources));
 		// and return promise
-		return Promise.resolve(data);
+		return Promise.resolve(this._resources);
 	}
 }
 

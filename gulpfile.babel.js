@@ -1,5 +1,3 @@
-
-
 import gulp from "gulp";
 import webpack from "webpack";
 import path from "path";
@@ -104,7 +102,12 @@ gulp.task("component", () => {
 			upCaseName: cap(name),
 		}))
 		.pipe(rename((currPath) => {
-			currPath.basename = currPath.basename.replace("temp", name);
+			if (currPath.basename === "temp") {
+				currPath.basename = "index";
+			}
+			else {
+				currPath.basename = currPath.basename.replace("temp", name);
+			}
 		}))
 		.pipe(gulp.dest(destPath));
 });

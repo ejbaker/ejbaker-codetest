@@ -5,7 +5,7 @@
 // THIRD-PARTY ----------------------------------
 import { some } from "lodash";
 // ADD ----------------------------------
-import StoreModule from "./store";
+import StoreModule from "Common/store";
 
 
 // PROPERTIES
@@ -80,12 +80,12 @@ function addRepeatError(done) {
 }
 
 /**
- * Test the update method - no errors.
+ * Test the edit method - no errors.
  *
- * @method updateNoErrors
+ * @method editNoErrors
  * @param {function} done
  */
-function updateNoErrors(done) {
+function editNoErrors(done) {
 	// define variables
 	let resource;
 	// get the list
@@ -94,12 +94,12 @@ function updateNoErrors(done) {
 			// change description
 			resource = resources[0];
 			resource.description = "New description.";
-			// update
-			return Store.update(resource);
+			// edit
+			return Store.edit(resource);
 		})
-		.then((updatedResources) => {
-			// expect updated resource
-			expect(some(updatedResources, resource)).to.be.true;
+		.then((editdResources) => {
+			// expect editd resource
+			expect(some(editdResources, resource)).to.be.true;
 			// done!
 			done();
 		})
@@ -107,14 +107,14 @@ function updateNoErrors(done) {
 }
 
 /**
- * Test the update method - error on nonexistent.
+ * Test the edit method - error on nonexistent.
  *
- * @method updateNonexistentError
+ * @method editNonexistentError
  * @param {function} done
  */
-function updateNonexistentError(done) {
-	// attempt the update with a bad ID
-	Store.update("bad-id")
+function editNonexistentError(done) {
+	// attempt the edit with a bad ID
+	Store.edit("bad-id")
 		.then(done)
 		.catch((err) => {
 			// should error
@@ -138,12 +138,12 @@ function removeNoErrors(done) {
 		.then((resources) => {
 			// change description
 			resource = resources[0];
-			// update
+			// edit
 			return Store.remove(resource.id);
 		})
-		.then((updatedResources) => {
+		.then((editdResources) => {
 			// resource should not exist
-			expect(some(updatedResources, resource)).to.be.false;
+			expect(some(editdResources, resource)).to.be.false;
 			// done!
 			done();
 		})
@@ -157,7 +157,7 @@ function removeNoErrors(done) {
  * @param {function} done
  */
 function removeNonexistentError(done) {
-	// attempt the update with a bad ID
+	// attempt the edit with a bad ID
 	Store.remove("bad-id")
 		.then(done)
 		.catch((err) => {
@@ -192,11 +192,11 @@ describe("Store", () => {
 				it("should return an error", addRepeatError);
 			});
 		});
-		// update
-		describe("update()", () => {
-			it("should add and return data", updateNoErrors);
+		// edit
+		describe("edit()", () => {
+			it("should add and return data", editNoErrors);
 			context("when updating nonexistent data", () => {
-				it("should return an error", updateNonexistentError);
+				it("should return an error", editNonexistentError);
 			});
 		});
 		// remove
