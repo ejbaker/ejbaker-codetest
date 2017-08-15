@@ -27,8 +27,8 @@ const homeModule = angular.module("home", [
 				// load up store on landing page
 				resolve: {
 					items(Store) {
-						console.log("Getting resources...");
-						return Store.list()
+						console.log("Getting most recent resources...");
+						return Store.list(true)
 							.then((resources) => {
 								console.log("Success!", resources);
 								return resources;

@@ -2,10 +2,11 @@
 // =============================================================================
 // THIRD-PARTY ----------------------------------
 // lodash
-import { isEmpty, isString } from "lodash";
+import { isEmpty, isString, sortBy } from "lodash";
 // APP ----------------------------------
-// local storage methods
+// localStorage methods
 import { list as listResources, save } from "./local";
+// utilities
 import { getByIds, getByName, removeByIds } from "./utils";
 
 // SERVICE
@@ -34,11 +35,29 @@ class Store {
 	 * Return all the existing resources.
 	 *
 	 * @method list
+	 * @param {boolean} recent
 	 * @returns {promise}
 	 */
-	list() {
+	list(recent = false) {
+		// are we only returning the most recent?
+		if (recent) {
+			return this.listRecent();
+		}
 		// return the data
 		return Promise.resolve(this._resources);
+	}
+
+	/**
+	 * Return most recent resources.
+	 *
+	 * @method listResources
+	 * @returns {promise}
+	 */
+	listRecent() {
+		// sort by date, return the most recent 5
+		const sortedData = sortBy(this._resources, "added");
+		// return the first 5
+		return Promise.resolve(sortedData.slice(0, 4));
 	}
 
 	/**
@@ -55,6 +74,9 @@ class Store {
 		}
 		// otherwise, add uuid...
 		resource.id = this._uuid.v4();
+		// and dates...
+		resource.added = new Date();
+		resource.updated = new Date();
 		// get data...
 		const data = this._resources;
 		// and add to data...
@@ -81,6 +103,8 @@ class Store {
 		if (!(index > -1)) {
 			return Promise.reject("No resource with that ID!");
 		}
+		// change updated date
+		resource.updated = new Date();
 		// otherwise, update data...
 		data[index] = resource;
 		// save...

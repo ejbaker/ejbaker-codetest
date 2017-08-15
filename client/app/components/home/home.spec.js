@@ -56,10 +56,14 @@ function viewBeforeEach() {
  *
  * @method moduleExists
  */
-function moduleExists() {
+function moduleExists(done) {
+	// TODO: fix this test
+	// it's failing because it isn't waiting for the resolve to finish...
+	// https://medium.com/evbinary/angularjs-and-ui-router-testing-the-right-way-part-1-c165c4565549
 	$location.url("/");
 	$rootScope.$digest();
-	expect($state.current.component).to.equal("home");
+	expect($state.current.name).to.equal("home");
+	done();
 }
 
 /**
