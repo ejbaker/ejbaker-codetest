@@ -42,23 +42,6 @@ class Store {
 	}
 
 	/**
-	 * Get an individual resource by ID.
-	 *
-	 * @method get
-	 * @param {string} resourceId
-	 */
-	get(resourceId) {
-		// get the data
-		const existingData = this._get(resourceId);
-		// make sure data exists
-		if (!existingData) {
-			return Promise.reject("No resource with that ID!");
-		}
-		// otherwise
-		return Promise.resolve(existingData);
-	}
-
-	/**
 	 * Add a new resource.
 	 *
 	 * @method add
