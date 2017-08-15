@@ -1,16 +1,17 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
-import template from "Res/editResource/editResource.html";
-import controller from "Res/editResource/editResource.controller";
-import "Res/editResource/editResource.scss";
+import template from "Res/removeResource/removeResource.html";
+import controller from "Res/removeResource/removeResource.controller";
+import "Res/removeResource/removeResource.scss";
 
 
 // COMPONENT
 // =============================================================================
-const editResourceComponent = {
+const removeResourceComponent = {
 	bindings: {
-		item: "<",
+		id: "@",
+		resourceName: "@",
 	},
 	template,
 	controller,
@@ -19,4 +20,4 @@ const editResourceComponent = {
 
 // EXPORT
 // =============================================================================
-export default editResourceComponent;
+export default removeResourceComponent;

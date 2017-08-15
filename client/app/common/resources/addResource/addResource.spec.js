@@ -37,7 +37,7 @@ function ctrlHasName() {
  */
 function ctrlHasTemplate() {
 	// tip: use regex to ensure correct bindings are used e.g., {{  }}
-	expect(AddResourceTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
+	expect(AddResourceTemplate).to.match(/\$ctrl\.adding/g);
 }
 
 /**
@@ -79,7 +79,7 @@ describe("AddResource", () => {
 	});
 	// template
 	describe("Template", () => {
-		it("has name in template [REMOVE]", ctrlHasTemplate);
+		it("invokes a template that contains adding flag", ctrlHasTemplate);
 	});
 	// component
 	describe("Component", () => {

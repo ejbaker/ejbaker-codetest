@@ -35,7 +35,7 @@ function ctrlHasName() {
  */
 function ctrlHasTemplate() {
 	// tip: use regex to ensure correct bindings are used e.g., {{  }}
-	expect(ResourcesTemplate).to.match(/item in \$ctrl\.items track by item\.id/g);
+	expect(ResourcesTemplate).to.match(/item in \$ctrl\.items/g);
 }
 
 /**

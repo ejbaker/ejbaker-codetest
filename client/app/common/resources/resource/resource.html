@@ -1,5 +1,9 @@
-<div>
-	{{ $ctrl.item }}
-	<edit-resource item="$ctrl.item"></edit-resource>
-	<remove-resource item="{{ $ctrl.id }}" resource-name="{{ $ctrl.name }}"></remove-resource>
+<div class="col-md-4">
+	<a ng-if="$ctrl.item.type === 'website'" href="$ctrl.item.ref">{{ $ctrl.item.name }}</a>
+	<span ng-if="$ctrl.item.type !== 'website'">{{ $ctrl.item.name }}</span>
+	<span ng-if="$ctrl.item.author || $ctrl.item.creator"><i>by</i> {{ $ctrl.item.author || $ctrl.item.creator }}</span>
 </div>
+<div class="col-md-5">{{ $ctrl.item.desc }}</div>
+<div class="col-md-1">{{ $ctrl.item.type }}</div>
+<edit-resource class="col-md-1" item="$ctrl.item"></edit-resource>
+<remove-resource class="col-md-1" id="{{ $ctrl.item.id }}" resource-name="{{ $ctrl.item.name }}"></remove-resource>

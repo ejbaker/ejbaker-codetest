@@ -1,21 +1,18 @@
-// DEPENDENCIES
-// =============================================================================
-// APP ----------------------------------
-import getFields from "Res/forms/saveResource";
-
-
 // CONTROLLER
 // =============================================================================
-class AddResourceController {
+class RemoveResourceController {
 	/**
 	 * @constructor
 	 * @param {object} Store
+	 * @param {object} Modal
 	 */
+	// constructor(Modal, Store) {
 	constructor(Store) {
 		"ngInject";
 
 		// injected dependencies
 		this._Store = Store;
+		// this._Modal = Modal;
 	}
 
 	/**
@@ -25,17 +22,7 @@ class AddResourceController {
 	 */
 	$onInit() {
 		// controller name
-		this.name = "addResource";
-		// initialize adding
-		this.adding = false;
-		// name form
-		this.form = "addForm";
-		// model
-		this.model = {};
-		// formly options
-		this.options = {};
-		// formly fields
-		this.fields = getFields();
+		this.name = "removeResource";
 	}
 
 	/**
@@ -44,18 +31,21 @@ class AddResourceController {
 	 * @method onSubmit
 	 */
 	onSubmit() {
-		this._Store.add(this.model)
-			.then((data) => {
-				this.adding = false;
-			})
+		// confirm delete
+		// const deleteConfirmationModal = this._Modal.confirm.delete(() => {
+		// remove from store
+		this._Store.remove(this.id)
+			.then()
 			.catch((err) => {
-				this.adding = false;
 				console.log("Error catch!", err);
 			});
+		// });
+		// pass context
+		// deleteConfirmationModal(this.resourceName);
 	}
 }
 
 
 // EXPORT
 // =============================================================================
-export default AddResourceController;
+export default RemoveResourceController;

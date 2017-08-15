@@ -1,25 +1,17 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
-import EditResourceModule from "Res/editResource";
-import EditResourceController from "Res/editResource/editResource.controller";
-import EditResourceComponent from "Res/editResource/editResource.component";
-import EditResourceTemplate from "Res/editResource/editResource.html";
+import RemoveResourceModule from "Res/removeResource";
+import RemoveResourceController from "Res/removeResource/removeResource.controller";
+import RemoveResourceComponent from "Res/removeResource/removeResource.component";
+import RemoveResourceTemplate from "Res/removeResource/removeResource.html";
 
 
 // PROPERTIES
 // =============================================================================
 let $rootScope;
 let controller;
-const component = EditResourceComponent;
-// added data
-const editedResource = {
-	id: "some-id",
-	name: "A Name",
-	type: "website",
-	desc: "A helpful site for learning.",
-	ref: "http://www.a-web-site.com/",
-};
+const component = RemoveResourceComponent;
 
 
 // METHODS
@@ -27,15 +19,15 @@ const editedResource = {
 // MAIN ----------------------------------
 
 /**
- * Tests the controller - has property.
+ * Tests the controller - has name.
  *
- * @method ctrlHasProp
+ * @method ctrlHasName
  */
-function ctrlHasProp() {
+function ctrlHasId() {
 	// initialize
 	controller.$onInit();
 	// check property
-	expect(controller).to.have.property("item");
+	expect(controller).to.have.property("id");
 }
 
 /**
@@ -45,7 +37,7 @@ function ctrlHasProp() {
  */
 function ctrlHasTemplate() {
 	// tip: use regex to ensure correct bindings are used e.g., {{  }}
-	expect(EditResourceTemplate).to.match(/\$ctrl\.editing/g);
+	expect(RemoveResourceTemplate).to.match(/\$ctrl\.onSubmit()/g);
 }
 
 /**
@@ -54,7 +46,7 @@ function ctrlHasTemplate() {
  * @method compHasTemplate
  */
 function compHasTemplate() {
-	expect(component.template).to.equal(EditResourceTemplate);
+	expect(component.template).to.equal(RemoveResourceTemplate);
 }
 
 /**
@@ -63,21 +55,19 @@ function compHasTemplate() {
  * @method compHasController
  */
 function compHasController() {
-	expect(component.controller).to.equal(EditResourceController);
+	expect(component.controller).to.equal(RemoveResourceController);
 }
 
 
 // TESTS
 // =============================================================================
 
-describe("EditResource", () => {
+describe("RemoveResource", () => {
 	// before
-	beforeEach(window.module(EditResourceModule));
+	beforeEach(window.module(RemoveResourceModule));
 	beforeEach(inject((_$rootScope_, _$componentController_) => {
 		$rootScope = _$rootScope_;
-		controller = _$componentController_("editResource", null, {
-			item: editedResource,
-		});
+		controller = _$componentController_("removeResource", null, { id: "some-id" });
 	}));
 	// module
 	describe("Module", () => {
@@ -85,11 +75,11 @@ describe("EditResource", () => {
 	});
 	// controller
 	describe("Controller", () => {
-		it("has an item property", ctrlHasProp);
+		it("has an ID property", ctrlHasId);
 	});
 	// template
 	describe("Template", () => {
-		it("invokes a template that contains editing flag", ctrlHasTemplate);
+		it("has onSubmit in template", ctrlHasTemplate);
 	});
 	// component
 	describe("Component", () => {

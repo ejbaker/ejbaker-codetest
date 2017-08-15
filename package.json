@@ -1,12 +1,12 @@
 {
   "private": true,
   "name": "ejbaker-ct",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "AngularJS 1.x code test for Gloo.",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ejbaker/NG6-starter.git"
+    "url": "https://github.com/ejbaker/ejbaker-codetest.git"
   },
   "author": "ejbaker",
   "license": "MIT",

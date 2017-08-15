@@ -1,3 +1,9 @@
+// DEPENDENCIES
+// =============================================================================
+// APP ----------------------------------
+import getFields from "Res/forms/saveResource";
+
+
 // CONTROLLER
 // =============================================================================
 class EditResourceController {
@@ -22,67 +28,14 @@ class EditResourceController {
 		this.name = "editResource";
 		// initialize editing
 		this.editing = false;
+		// name form
+		this.form = "editForm";
 		// copy existing item onto the model
 		this.model = JSON.parse(JSON.stringify(this.item));
 		// formly options
 		this.options = {};
 		// formly fields
-		this.fields = [
-			{
-				key: "name",
-				type: "input",
-				templateOptions: {
-					label: "Name",
-					placeholder: "Resource Name",
-					required: true,
-				},
-			},
-			{
-				key: "type",
-				type: "select",
-				templateOptions: {
-					label: "Type",
-					notNull: true,
-					options: [
-						{
-							name: "Book",
-							value: "book",
-						},
-						{
-							name: "Podcast",
-							value: "podcast",
-						},
-						{
-							name: "Website",
-							value: "website",
-						},
-						{
-							name: "YouTube Channel",
-							value: "youtube",
-						},
-					],
-				},
-			},
-			{
-				key: "desc",
-				type: "textarea",
-				templateOptions: {
-					label: "Description",
-					placeholder: "A really awesome resource for Subject that I use every day.",
-					required: true,
-				},
-			},
-			{
-				key: "ref",
-				type: "input",
-				templateOptions: {
-					type: "url",
-					label: "Reference",
-					placeholder: "http://somewhere.you.can.find.this.com/",
-					required: true,
-				},
-			},
-		];
+		this.fields = getFields();
 	}
 
 	/**
@@ -91,12 +44,11 @@ class EditResourceController {
 	 * @method onSubmit
 	 */
 	onSubmit() {
-		this._Store.edit(this.model)
-			.then((data) => {
-				this.editing = false;
-			})
+		const vm = this;
+		vm.editing = false;
+		vm._Store.edit(vm.model)
+			.then()
 			.catch((err) => {
-				this.editing = false;
 				console.log("Error catch!", err);
 			});
 	}
