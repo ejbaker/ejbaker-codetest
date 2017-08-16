@@ -2,14 +2,14 @@
 	<div class="row" ng-if="!$ctrl.items.length">
 		<div class="col-xs-12">No resources have been added yet!</div>
 	</div>
-	<div class="row" ng-if="$ctrl.type === 'all'">
+	<div class="row header-row" ng-if="$ctrl.type === 'all'">
 		<div class="col-md-4">Name</div>
 		<div class="col-md-5">Description</div>
 		<div class="col-md-1">Type</div>
 		<div class="col-md-1">Edit</div>
 		<div class="col-md-1">Delete</div>
 	</div>
-	<div class="row" ng-if="$ctrl.type === 'recent'">
+	<div class="row header-row" ng-if="$ctrl.type === 'recent'">
 		<div class="col-md-5">Name</div>
 		<div class="col-md-6">Description</div>
 		<div class="col-md-1">Type</div>
