@@ -7,7 +7,7 @@ import { isEmpty, isString, sortBy } from "lodash";
 // localStorage methods
 import { list as listResources, save } from "./local";
 // utilities
-import { getByIds, getByName, removeByIds } from "./utils";
+import { getByIds, ensureUniq, removeByIds } from "./utils";
 
 // SERVICE
 // =============================================================================
@@ -70,7 +70,7 @@ class Store {
 	 */
 	add(resource) {
 		// error check
-		if (getByName(resource.name, this._resources)) {
+		if (ensureUniq(resource.name, resource.type, this._resources)) {
 			return Promise.reject("Resource exists!");
 		}
 		// otherwise, add uuid...
