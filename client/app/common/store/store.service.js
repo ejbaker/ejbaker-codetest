@@ -35,13 +35,13 @@ class Store {
 	 * Return all the existing resources.
 	 *
 	 * @method list
-	 * @param {boolean} recent
+	 * @param {number} count (optional)
 	 * @returns {promise}
 	 */
-	list(recent = false) {
+	list(count) {
 		// are we only returning the most recent?
-		if (recent) {
-			return this.listRecent();
+		if (count) {
+			return this.listRecent(count);
 		}
 		// return the data
 		return Promise.resolve(this._resources);
@@ -51,13 +51,14 @@ class Store {
 	 * Return most recent resources.
 	 *
 	 * @method listResources
+	 * @param {number} count (optional)
 	 * @returns {promise}
 	 */
-	listRecent() {
+	listRecent(count = 5) {
 		// sort by date, return the most recent 5
 		const sortedData = sortBy(this._resources, "added");
 		// return the first 5
-		return Promise.resolve(sortedData.slice(0, 4));
+		return Promise.resolve(sortedData.slice(0, count));
 	}
 
 	/**

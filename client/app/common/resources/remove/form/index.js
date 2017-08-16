@@ -3,26 +3,23 @@
 // THIRD-PARTY ----------------------------------
 import angular from "angular";
 // APP ----------------------------------
-import Navbar from "Common/navbar";
-import Footer from "Common/footer";
-import Resources from "Common/resources/list";
-import Modal from "Common/modal";
 import Store from "Common/store";
+import Modal from "Common/modal";
+import removeFormComponent from "Res/remove/form/form.component";
 
 
 // MODULE
 // =============================================================================
-const commonModule = angular.module("app.common", [
-	Navbar,
-	Footer,
-	Resources,
-	Modal,
+const removeFormModule = angular.module("removeForm", [
 	Store,
+	Modal,
 ])
+	// add component
+	.component("removeForm", removeFormComponent)
 	// name
 	.name;
 
 
 // EXPORT
 // =============================================================================
-export default commonModule;
+export default removeFormModule;

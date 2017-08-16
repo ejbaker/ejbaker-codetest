@@ -3,26 +3,21 @@
 // THIRD-PARTY ----------------------------------
 import angular from "angular";
 // APP ----------------------------------
-import Navbar from "Common/navbar";
-import Footer from "Common/footer";
-import Resources from "Common/resources/list";
-import Modal from "Common/modal";
-import Store from "Common/store";
+import resourcesComponent from "Res/list/resources.component";
+import resource from "Res/resource";
 
 
 // MODULE
 // =============================================================================
-const commonModule = angular.module("app.common", [
-	Navbar,
-	Footer,
-	Resources,
-	Modal,
-	Store,
+const resourcesModule = angular.module("resources", [
+	resource,
 ])
+	// add component
+	.component("resources", resourcesComponent)
 	// name
 	.name;
 
 
 // EXPORT
 // =============================================================================
-export default commonModule;
+export default resourcesModule;

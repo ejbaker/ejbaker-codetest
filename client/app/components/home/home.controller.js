@@ -2,14 +2,10 @@
 // =============================================================================
 class HomeController {
 	/**
-	 * @constructor
-	 * @param {object} Store
+	 * @method $onInit
 	 */
-	constructor(Store) {
-		"ngInject";
-
+	$onInit() {
 		this.name = "home";
-		// the resources, resolved on the route
 	}
 }
 

@@ -2,27 +2,26 @@
 // =============================================================================
 // THIRD-PARTY ----------------------------------
 import angular from "angular";
+import formly from "angular-formly";
+import formlyBootstrap from "angular-formly-templates-bootstrap";
 // APP ----------------------------------
-import Navbar from "Common/navbar";
-import Footer from "Common/footer";
-import Resources from "Common/resources/list";
-import Modal from "Common/modal";
 import Store from "Common/store";
+import editFormComponent from "Res/edit/form/form.component";
 
 
 // MODULE
 // =============================================================================
-const commonModule = angular.module("app.common", [
-	Navbar,
-	Footer,
-	Resources,
-	Modal,
+const editFormModule = angular.module("editForm", [
+	formly,
+	formlyBootstrap,
 	Store,
 ])
+	// add component
+	.component("editForm", editFormComponent)
 	// name
 	.name;
 
 
 // EXPORT
 // =============================================================================
-export default commonModule;
+export default editFormModule;

@@ -1,18 +1,15 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
-import template from "./resource.html";
-import controller from "./resource.controller";
-import "./resource.scss";
+import template from "Res/add/button/button.html";
+import controller from "Res/add/button/button.controller";
+import "Res/add/button/button.scss";
 
 
 // COMPONENT
 // =============================================================================
-const resourceComponent = {
-	bindings: {
-		item: "<",
-		type: "<",
-	},
+const addButtonComponent = {
+	bindings: {},
 	template,
 	controller,
 };
@@ -20,4 +17,4 @@ const resourceComponent = {
 
 // EXPORT
 // =============================================================================
-export default resourceComponent;
+export default addButtonComponent;

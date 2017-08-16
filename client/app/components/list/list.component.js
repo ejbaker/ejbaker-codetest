@@ -1,17 +1,16 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
-import template from "./resource.html";
-import controller from "./resource.controller";
-import "./resource.scss";
+import template from "./list.html";
+import controller from "./list.controller";
+import "./list.scss";
 
 
 // COMPONENT
 // =============================================================================
-const resourceComponent = {
+const listComponent = {
 	bindings: {
-		item: "<",
-		type: "<",
+		items: "<",
 	},
 	template,
 	controller,
@@ -20,4 +19,4 @@ const resourceComponent = {
 
 // EXPORT
 // =============================================================================
-export default resourceComponent;
+export default listComponent;

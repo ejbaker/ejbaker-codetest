@@ -1,16 +1,20 @@
 // CONTROLLER
 // =============================================================================
-class ResourceController {
+class EditButtonController {
 	/**
+	 * Fires when the controller is finished initializing.
+	 *
 	 * @method $onInit
 	 */
 	$onInit() {
-		this.name = "resource";
-		this.recent = (this.type === "recent");
+		// controller name
+		this.name = "editButton";
+		// initialize editing
+		this.editing = false;
 	}
 }
 
 
 // EXPORT
 // =============================================================================
-export default ResourceController;
+export default EditButtonController;

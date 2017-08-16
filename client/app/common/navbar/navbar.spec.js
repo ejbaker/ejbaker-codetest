@@ -62,7 +62,7 @@ function ctrlHasName() {
  * @method viewHasTemplate
  */
 function viewHasTemplate() {
-	expect(template.find("h1").find("a").html()).to.equal("home");
+	expect(template.find("h1").find("a").html()).to.equal("Resource Store");
 }
 
 

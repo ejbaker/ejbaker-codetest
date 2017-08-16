@@ -1,25 +1,17 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
-import ResourceModule from "Res/resource";
-import ResourceController from "Res/resource/resource.controller";
-import ResourceComponent from "Res/resource/resource.component";
-import ResourceTemplate from "Res/resource/resource.html";
+import RemoveFormModule from "Res/remove/form";
+import RemoveFormController from "Res/remove/form/form.controller";
+import RemoveFormComponent from "Res/remove/form/form.component";
+import RemoveFormTemplate from "Res/remove/form/form.html";
 
 
 // PROPERTIES
 // =============================================================================
 let $rootScope;
 let controller;
-const component = ResourceComponent;
-// data
-const resource = {
-	id: "some-id",
-	name: "A Name",
-	type: "website",
-	desc: "A helpful site for learning.",
-	ref: "http://www.a-web-site.com/",
-};
+const component = RemoveFormComponent;
 
 
 // METHODS
@@ -31,9 +23,11 @@ const resource = {
  *
  * @method ctrlHasName
  */
-function ctrlHasName() {
+function ctrlHasId() {
+	// initialize
 	controller.$onInit();
-	expect(controller).to.have.property("name");
+	// check property
+	expect(controller).to.have.property("item");
 }
 
 /**
@@ -43,7 +37,7 @@ function ctrlHasName() {
  */
 function ctrlHasTemplate() {
 	// tip: use regex to ensure correct bindings are used e.g., {{  }}
-	expect(ResourceTemplate).to.match(/\$ctrl\.recent/g);
+	expect(RemoveFormTemplate).to.match(/\$ctrl\.onSubmit()/g);
 }
 
 /**
@@ -52,7 +46,7 @@ function ctrlHasTemplate() {
  * @method compHasTemplate
  */
 function compHasTemplate() {
-	expect(component.template).to.equal(ResourceTemplate);
+	expect(component.template).to.equal(RemoveFormTemplate);
 }
 
 /**
@@ -61,22 +55,19 @@ function compHasTemplate() {
  * @method compHasController
  */
 function compHasController() {
-	expect(component.controller).to.equal(ResourceController);
+	expect(component.controller).to.equal(RemoveFormController);
 }
 
 
 // TESTS
 // =============================================================================
 
-describe("Resource", () => {
+describe("RemoveForm", () => {
 	// before
-	beforeEach(window.module(ResourceModule));
+	beforeEach(window.module(RemoveFormModule));
 	beforeEach(inject((_$rootScope_, _$componentController_) => {
 		$rootScope = _$rootScope_;
-		controller = _$componentController_("resource", null, {
-			item: resource,
-			type: "recent",
-		});
+		controller = _$componentController_("removeForm", null, { item: { id: "some-id", name: "Some Name" } });
 	}));
 	// module
 	describe("Module", () => {
@@ -84,11 +75,11 @@ describe("Resource", () => {
 	});
 	// controller
 	describe("Controller", () => {
-		it("has an item property", ctrlHasName);
+		it("has an ID property", ctrlHasId);
 	});
 	// template
 	describe("Template", () => {
-		it("has recent flag in template", ctrlHasTemplate);
+		it("has onSubmit in template", ctrlHasTemplate);
 	});
 	// component
 	describe("Component", () => {

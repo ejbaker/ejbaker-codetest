@@ -5,12 +5,12 @@ import angular from "angular";
 import uiRouter from "angular-ui-router";
 // APP ----------------------------------
 import StoreModule from "Common/store";
-import homeComponent from "./home.component";
+import listComponent from "./list.component";
 
 
 // MODULE
 // =============================================================================
-const homeModule = angular.module("home", [
+const listModule = angular.module("list", [
 	uiRouter,
 	StoreModule,
 ])
@@ -21,13 +21,13 @@ const homeModule = angular.module("home", [
 		$urlRouterProvider.otherwise("/");
 
 		$stateProvider
-			.state("home", {
-				url: "/",
-				component: "home",
+			.state("list", {
+				url: "/list",
+				component: "list",
 				// load up store on landing page
 				resolve: {
 					items(Store) {
-						return Store.list(5)
+						return Store.list()
 							.then((resources) => {
 								console.log("Success!", resources);
 								return resources;
@@ -41,11 +41,11 @@ const homeModule = angular.module("home", [
 			});
 	})
 	// add component
-	.component("home", homeComponent)
+	.component("list", listComponent)
 	// name
 	.name;
 
 
 // EXPORT
 // =============================================================================
-export default homeModule;
+export default listModule;

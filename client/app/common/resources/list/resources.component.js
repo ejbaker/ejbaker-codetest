@@ -1,17 +1,17 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
-import template from "./resource.html";
-import controller from "./resource.controller";
-import "./resource.scss";
+import template from "Res/list/resources.html";
+import controller from "Res/list/resources.controller";
+import "Res/list/resources.scss";
 
 
 // COMPONENT
 // =============================================================================
-const resourceComponent = {
+const resourcesComponent = {
 	bindings: {
-		item: "<",
-		type: "<",
+		items: "<",
+		type: "@",
 	},
 	template,
 	controller,
@@ -20,4 +20,4 @@ const resourceComponent = {
 
 // EXPORT
 // =============================================================================
-export default resourceComponent;
+export default resourcesComponent;

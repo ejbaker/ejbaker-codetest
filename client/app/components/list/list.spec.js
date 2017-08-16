@@ -3,7 +3,7 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
-import HomeModule from "Comp/home";
+import ListModule from "Comp/list";
 
 
 // PROPERTIES
@@ -32,7 +32,7 @@ let template;
  * @method ctrlBeforeEach
  */
 function ctrlBeforeEach() {
-	controller = $componentController("home", {
+	controller = $componentController("list", {
 		$scope: $rootScope.$new(),
 	});
 }
@@ -44,7 +44,7 @@ function ctrlBeforeEach() {
  */
 function viewBeforeEach() {
 	scope = $rootScope.$new();
-	template = $compile("<home></home>")(scope);
+	template = $compile("<list></list>")(scope);
 	scope.$apply();
 }
 
@@ -60,9 +60,9 @@ function moduleExists(done) {
 	// TODO: fix this test
 	// it's failing because it isn't waiting for the resolve to finish...
 	// https://medium.com/evbinary/angularjs-and-ui-router-testing-the-right-way-part-1-c165c4565549
-	$location.url("/");
+	$location.url("/list");
 	$rootScope.$digest();
-	expect($state.current.name).to.equal("home");
+	expect($state.current.name).to.equal("list");
 	done();
 }
 
@@ -82,16 +82,16 @@ function ctrlHasName() {
  * @method viewHasTemplate
  */
 function viewHasTemplate() {
-	expect(template.find("h1").html()).to.equal("home");
+	expect(template.find("h1").html()).to.equal("list");
 }
 
 
 // TESTS
 // =============================================================================
 
-describe("Home", () => {
+describe("List", () => {
 	// before each
-	beforeEach(window.module(HomeModule));
+	beforeEach(window.module(ListModule));
 	// inject dependencies
 	beforeEach(inject(($injector) => {
 		Store = $injector.get("Store");
@@ -104,7 +104,7 @@ describe("Home", () => {
 	// module
 	describe("Module", () => {
 		// top-level specs: i.e., routes, injection, naming
-		it("default component should be home", moduleExists);
+		it("component should be list", moduleExists);
 	});
 	// controller
 	describe("Controller", () => {

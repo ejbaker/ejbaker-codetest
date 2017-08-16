@@ -1,16 +1,15 @@
 // CONTROLLER
 // =============================================================================
-class ResourceController {
+class ListController {
 	/**
 	 * @method $onInit
 	 */
 	$onInit() {
-		this.name = "resource";
-		this.recent = (this.type === "recent");
+		this.name = "list";
 	}
 }
 
 
 // EXPORT
 // =============================================================================
-export default ResourceController;
+export default ListController;

@@ -3,26 +3,18 @@
 // THIRD-PARTY ----------------------------------
 import angular from "angular";
 // APP ----------------------------------
-import Navbar from "Common/navbar";
-import Footer from "Common/footer";
-import Resources from "Common/resources/list";
-import Modal from "Common/modal";
-import Store from "Common/store";
+import editButtonComponent from "Res/edit/button/button.component";
 
 
 // MODULE
 // =============================================================================
-const commonModule = angular.module("app.common", [
-	Navbar,
-	Footer,
-	Resources,
-	Modal,
-	Store,
-])
+const editButtonModule = angular.module("editButton", [])
+	// add component
+	.component("editButton", editButtonComponent)
 	// name
 	.name;
 
 
 // EXPORT
 // =============================================================================
-export default commonModule;
+export default editButtonModule;

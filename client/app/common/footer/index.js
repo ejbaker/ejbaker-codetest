@@ -2,16 +2,13 @@
 // =============================================================================
 // THIRD-PARTY ----------------------------------
 import angular from "angular";
-import uiRouter from "angular-ui-router";
 // APP ----------------------------------
 import footerComponent from "./footer.component";
 
 
 // MODULE
 // =============================================================================
-const footerModule = angular.module("footer", [
-	uiRouter,
-])
+const footerModule = angular.module("footer", [])
 	// add component
 	.component("footer", footerComponent)
 	// name

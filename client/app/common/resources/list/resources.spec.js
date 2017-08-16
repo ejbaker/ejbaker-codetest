@@ -1,25 +1,17 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
-import ResourceModule from "Res/resource";
-import ResourceController from "Res/resource/resource.controller";
-import ResourceComponent from "Res/resource/resource.component";
-import ResourceTemplate from "Res/resource/resource.html";
+import ResourcesModule from "Res/list";
+import ResourcesController from "Res/list/resources.controller";
+import ResourcesComponent from "Res/list/resources.component";
+import ResourcesTemplate from "Res/list/resources.html";
 
 
 // PROPERTIES
 // =============================================================================
 let $rootScope;
-let controller;
-const component = ResourceComponent;
-// data
-const resource = {
-	id: "some-id",
-	name: "A Name",
-	type: "website",
-	desc: "A helpful site for learning.",
-	ref: "http://www.a-web-site.com/",
-};
+let makeController;
+const component = ResourcesComponent;
 
 
 // METHODS
@@ -32,7 +24,7 @@ const resource = {
  * @method ctrlHasName
  */
 function ctrlHasName() {
-	controller.$onInit();
+	const controller = makeController();
 	expect(controller).to.have.property("name");
 }
 
@@ -43,7 +35,7 @@ function ctrlHasName() {
  */
 function ctrlHasTemplate() {
 	// tip: use regex to ensure correct bindings are used e.g., {{  }}
-	expect(ResourceTemplate).to.match(/\$ctrl\.recent/g);
+	expect(ResourcesTemplate).to.match(/item in \$ctrl\.items/g);
 }
 
 /**
@@ -52,7 +44,7 @@ function ctrlHasTemplate() {
  * @method compHasTemplate
  */
 function compHasTemplate() {
-	expect(component.template).to.equal(ResourceTemplate);
+	expect(component.template).to.equal(ResourcesTemplate);
 }
 
 /**
@@ -61,22 +53,19 @@ function compHasTemplate() {
  * @method compHasController
  */
 function compHasController() {
-	expect(component.controller).to.equal(ResourceController);
+	expect(component.controller).to.equal(ResourcesController);
 }
 
 
 // TESTS
 // =============================================================================
 
-describe("Resource", () => {
+describe("Resources", () => {
 	// before
-	beforeEach(window.module(ResourceModule));
-	beforeEach(inject((_$rootScope_, _$componentController_) => {
+	beforeEach(window.module(ResourcesModule));
+	beforeEach(inject((_$rootScope_) => {
 		$rootScope = _$rootScope_;
-		controller = _$componentController_("resource", null, {
-			item: resource,
-			type: "recent",
-		});
+		makeController = () => (new ResourcesController());
 	}));
 	// module
 	describe("Module", () => {
@@ -84,11 +73,11 @@ describe("Resource", () => {
 	});
 	// controller
 	describe("Controller", () => {
-		it("has an item property", ctrlHasName);
+		it("has a name property", ctrlHasName);
 	});
 	// template
 	describe("Template", () => {
-		it("has recent flag in template", ctrlHasTemplate);
+		it("has items in template", ctrlHasTemplate);
 	});
 	// component
 	describe("Component", () => {

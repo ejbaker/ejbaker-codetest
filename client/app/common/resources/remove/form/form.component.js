@@ -1,17 +1,16 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
-import template from "./resource.html";
-import controller from "./resource.controller";
-import "./resource.scss";
+import template from "Res/remove/form/form.html";
+import controller from "Res/remove/form/form.controller";
+import "Res/remove/form/form.scss";
 
 
 // COMPONENT
 // =============================================================================
-const resourceComponent = {
+const removeFormComponent = {
 	bindings: {
 		item: "<",
-		type: "<",
 	},
 	template,
 	controller,
@@ -20,4 +19,4 @@ const resourceComponent = {
 
 // EXPORT
 // =============================================================================
-export default resourceComponent;
+export default removeFormComponent;

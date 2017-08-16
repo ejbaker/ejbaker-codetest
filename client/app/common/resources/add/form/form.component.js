@@ -1,18 +1,15 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
-import template from "./resource.html";
-import controller from "./resource.controller";
-import "./resource.scss";
+import template from "Res/add/form/form.html";
+import controller from "Res/add/form/form.controller";
+import "Res/add/form/form.scss";
 
 
 // COMPONENT
 // =============================================================================
-const resourceComponent = {
-	bindings: {
-		item: "<",
-		type: "<",
-	},
+const addFormComponent = {
+	bindings: {},
 	template,
 	controller,
 };
@@ -20,4 +17,4 @@ const resourceComponent = {
 
 // EXPORT
 // =============================================================================
-export default resourceComponent;
+export default addFormComponent;
