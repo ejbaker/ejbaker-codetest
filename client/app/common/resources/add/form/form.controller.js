@@ -9,13 +9,17 @@ import getFields from "Res/forms/saveResource";
 class AddFormController {
 	/**
 	 * @constructor
+	 * @param {object} $state
 	 * @param {object} Store
+	 * @param {object} Errors
 	 */
-	constructor(Store) {
+	constructor($state, Store, Errors) {
 		"ngInject";
 
 		// injected dependencies
+		this._$state = $state;
 		this._Store = Store;
+		this._Errors = Errors;
 	}
 
 	/**
@@ -44,14 +48,10 @@ class AddFormController {
 	 * @method onSubmit
 	 */
 	onSubmit() {
+		this.adding = false;
 		this._Store.add(this.model)
-			.then((data) => {
-				this.adding = false;
-			})
-			.catch((err) => {
-				this.adding = false;
-				console.log("Error catch!", err);
-			});
+			.then(() => (this._$state.go("list")))
+			.catch(err => this._Errors.catch(err));
 	}
 }
 

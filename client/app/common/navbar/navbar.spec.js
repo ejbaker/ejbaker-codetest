@@ -7,8 +7,6 @@ import NavbarModule from "Common/navbar";
 // PROPERTIES
 // =============================================================================
 let $rootScope;
-let $state;
-let $location;
 let $componentController;
 let $compile;
 // controller specs
@@ -62,7 +60,7 @@ function ctrlHasName() {
  * @method viewHasTemplate
  */
 function viewHasTemplate() {
-	expect(template.find("h1").find("a").html()).to.equal("Resource Store");
+	expect(template.find("div").find("a").html()).to.equal("Your Favorite Resources");
 }
 
 
@@ -75,8 +73,6 @@ describe("Navbar", () => {
 	beforeEach(inject(($injector) => {
 		$rootScope = $injector.get("$rootScope");
 		$componentController = $injector.get("$componentController");
-		$state = $injector.get("$state");
-		$location = $injector.get("$location");
 		$compile = $injector.get("$compile");
 	}));
 	// module

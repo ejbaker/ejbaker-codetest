@@ -45,7 +45,7 @@ function ctrlHasProp() {
  */
 function ctrlHasTemplate() {
 	// tip: use regex to ensure correct bindings are used e.g., {{  }}
-	expect(EditButtonTemplate).to.match(/\$ctrl\.editing/g);
+	expect(EditButtonTemplate).to.match(/ui-sref="edit\(\{ id: \$ctrl\.item\.id \}\)"/g);
 }
 
 /**
@@ -89,7 +89,7 @@ describe("EditButton", () => {
 	});
 	// template
 	describe("Template", () => {
-		it("invokes a template that contains editing flag", ctrlHasTemplate);
+		it("invokes a template", ctrlHasTemplate);
 	});
 	// component
 	describe("Component", () => {

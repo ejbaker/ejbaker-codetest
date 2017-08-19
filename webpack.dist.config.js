@@ -4,7 +4,7 @@ const config = require("./webpack.config");
 
 config.output = {
 	filename: "[name].bundle.js",
-	publicPath: "",
+	publicPath: "ejbaker-codetest",
 	path: path.resolve(__dirname, "dist"),
 };
 

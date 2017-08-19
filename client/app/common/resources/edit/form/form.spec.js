@@ -1,6 +1,7 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
+import ErrorsModule from "Common/errors";
 import EditFormModule from "Res/edit/form";
 import EditFormController from "Res/edit/form/form.controller";
 import EditFormComponent from "Res/edit/form/form.component";
@@ -9,7 +10,7 @@ import EditFormTemplate from "Res/edit/form/form.html";
 
 // PROPERTIES
 // =============================================================================
-let $rootScope;
+let $componentController;
 let controller;
 const component = EditFormComponent;
 // added data
@@ -72,10 +73,12 @@ function compHasController() {
 
 describe("EditForm", () => {
 	// before
+	beforeEach(window.module("ui.router"));
+	beforeEach(window.module(ErrorsModule));
 	beforeEach(window.module(EditFormModule));
-	beforeEach(inject((_$rootScope_, _$componentController_) => {
-		$rootScope = _$rootScope_;
-		controller = _$componentController_("editForm", null, {
+	beforeEach(inject(($injector) => {
+		$componentController = $injector.get("$componentController");
+		controller = $componentController("editForm", null, {
 			item: editedResource,
 		});
 	}));

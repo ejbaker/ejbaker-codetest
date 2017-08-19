@@ -3,6 +3,7 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
+import ErrorsModule from "Common/errors";
 import HomeModule from "Comp/home";
 
 
@@ -20,6 +21,11 @@ let controller;
 // view layer specs.
 let scope;
 let template;
+const items = [
+	{
+		name: "test name",
+	},
+];
 
 
 // METHODS
@@ -57,12 +63,13 @@ function viewBeforeEach() {
  * @method moduleExists
  */
 function moduleExists(done) {
-	// TODO: fix this test
-	// it's failing because it isn't waiting for the resolve to finish...
-	// https://medium.com/evbinary/angularjs-and-ui-router-testing-the-right-way-part-1-c165c4565549
+	// go to default url
 	$location.url("/");
+	// digest
 	$rootScope.$digest();
-	expect($state.current.name).to.equal("home");
+	// should be home
+	expect($state.current.component).to.equal("home");
+	// done!
 	done();
 }
 
@@ -82,28 +89,36 @@ function ctrlHasName() {
  * @method viewHasTemplate
  */
 function viewHasTemplate() {
-	expect(template.find("h1").html()).to.equal("home");
+	expect(template.find("h1").html()).to.equal("recent activity");
 }
 
 
 // TESTS
 // =============================================================================
 
-describe("Home", () => {
+describe("Home View", () => {
 	// before each
+	beforeEach(window.module("ui.router"));
+	beforeEach(window.module(ErrorsModule));
+	// beforeEach(window.module("ui.router"));
 	beforeEach(window.module(HomeModule));
 	// inject dependencies
 	beforeEach(inject(($injector) => {
 		Store = $injector.get("Store");
+		Store.add({
+			name: "some name",
+			type: "something",
+		});
 		$rootScope = $injector.get("$rootScope");
 		$componentController = $injector.get("$componentController");
+		// $state = $injector.get("$state");
 		$state = $injector.get("$state");
 		$location = $injector.get("$location");
 		$compile = $injector.get("$compile");
 	}));
 	// module
 	describe("Module", () => {
-		// top-level specs: i.e., routes, injection, naming
+		// top-level specs: i.e., states, injection, naming
 		it("default component should be home", moduleExists);
 	});
 	// controller

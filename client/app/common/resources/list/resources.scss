@@ -1,3 +1,36 @@
 .resources {
 	color: red;
 }
+
+.row {
+	vertical-align: top;
+	border-top: 1px solid #eceeef;
+	> div {
+		display: table-cell;
+		padding: 1rem .75rem;
+		&:nth-child(4) {
+			text-align: right;
+		}
+	}
+}
+.row-header {
+	font-weight: bold;
+	vertical-align: bottom;
+    border-top: 1px solid #eceeef;	
+	border-bottom: 2px solid #eceeef;
+	> div {
+		&:nth-child(4) {
+			text-align: center;
+		}
+	}
+}
+dir-pagination-controls {
+	display: block;
+	text-align: center;
+}
+.caret.reverse {
+	content: "";
+	border-top: 0;
+	border-bottom: 4px dashed;
+	border-bottom: 4px solid\9;
+}

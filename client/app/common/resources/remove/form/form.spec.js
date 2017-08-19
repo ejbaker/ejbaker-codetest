@@ -1,6 +1,7 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
+import ErrorsModule from "Common/errors";
 import RemoveFormModule from "Res/remove/form";
 import RemoveFormController from "Res/remove/form/form.controller";
 import RemoveFormComponent from "Res/remove/form/form.component";
@@ -64,6 +65,7 @@ function compHasController() {
 
 describe("RemoveForm", () => {
 	// before
+	beforeEach(window.module(ErrorsModule));
 	beforeEach(window.module(RemoveFormModule));
 	beforeEach(inject((_$rootScope_, _$componentController_) => {
 		$rootScope = _$rootScope_;

@@ -1,15 +1,18 @@
 // CONTROLLER
 // =============================================================================
-class HomeController {
+class AddController {
 	/**
+	 * Fires when the controller is finished initializing.
+	 *
 	 * @method $onInit
 	 */
 	$onInit() {
-		this.name = "recent activity";
+		// controller name
+		this.name = "add";
 	}
 }
 
 
 // EXPORT
 // =============================================================================
-export default HomeController;
+export default AddController;

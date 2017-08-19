@@ -1,15 +1,18 @@
 // CONTROLLER
 // =============================================================================
-class FooterController {
+class EditController {
 	/**
-	 * @constructor
+	 * Fires when the controller is finished initializing.
+	 *
+	 * @method $onInit
 	 */
-	constructor() {
-		this.name = "footer";
+	$onInit() {
+		// controller name
+		this.name = "edit";
 	}
 }
 
 
 // EXPORT
 // =============================================================================
-export default FooterController;
+export default EditController;

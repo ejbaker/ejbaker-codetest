@@ -1,0 +1,65 @@
+.modal-dialog {
+	color: #222;
+}
+
+.modal-secondary {
+	.modal-dialog {
+		color: #292b2c;
+		border-color: #ccc;
+		.modal-content {
+			background-color: #fff;
+		}
+	}
+}
+
+.modal-success {
+	.modal-dialog {
+		border-color: #d0e9c6;
+		color: #3c763d;
+		.modal-content {
+			background-color: #dff0d8;			
+		}
+		.modal-header, .modal-footer {
+			border-color: #d0e9c6;
+		}
+	}
+}
+
+.modal-info {
+	.modal-dialog {
+		border-color: #bcdff1;
+		color: #31708f;		
+		.modal-content {
+			background-color: #d9edf7;
+		}
+		.modal-header, .modal-footer {
+			border-color: #bcdff1;
+		}
+	}
+}
+
+.modal-warn {
+	.modal-dialog {
+		border-color: #faf2cc;
+		color: #8a6d3b;		
+		.modal-content {
+			background-color: #fcf8e3;
+		}
+		.modal-header, .modal-footer {
+			border-color: #faf2cc;
+		}
+	}
+}
+
+.modal-danger {
+	.modal-dialog {
+		border-color: #ebcccc;
+		color: #a94442;		
+		.modal-content {
+			background-color: #f2dede;
+		}
+		.modal-header, .modal-footer {
+			border-color: #ebcccc;
+		}
+	}
+}

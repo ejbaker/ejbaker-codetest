@@ -3,8 +3,9 @@
 // THIRD-PARTY ----------------------------------
 import angular from "angular";
 import uiRouter from "angular-ui-router";
+import dirPagination from "angular-utils-pagination";
 // APP ----------------------------------
-import StoreModule from "Common/store";
+import StoreService from "Common/store";
 import listComponent from "./list.component";
 
 
@@ -12,7 +13,8 @@ import listComponent from "./list.component";
 // =============================================================================
 const listModule = angular.module("list", [
 	uiRouter,
-	StoreModule,
+	dirPagination,
+	StoreService,
 ])
 	// config
 	.config(($stateProvider, $urlRouterProvider) => {
@@ -26,16 +28,10 @@ const listModule = angular.module("list", [
 				component: "list",
 				// load up store on landing page
 				resolve: {
-					items(Store) {
+					items(Store, Errors) {
 						return Store.list()
-							.then((resources) => {
-								console.log("Success!", resources);
-								return resources;
-							})
-							.catch((err) => {
-								console.log(err);
-								return err;
-							});
+							.then()
+							.catch(err => Errors.catch(err));
 					},
 				},
 			});

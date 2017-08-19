@@ -1,13 +1,15 @@
-<nav class="navbar">
-	<div class="logo">
-		<h1>
-			<a ui-sref="home">Resource Store</a>
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" ui-sref="home">Your Favorite Resources</a>
+	</div>
+	<nav class="collapse navbar-collapse">
+		<div class="nav navbar-nav">
 			<add-button></add-button>			
-		</h1>
-	</div>
-	<div class="nav-links">
-		<span><a ui-sref="home">home</a></span>
-		<span><a ui-sref="about">about</a></span>
-		<span><a ui-sref="list">list</a></span>
-	</div>
-</nav>
+		</div>
+		<ul class="nav navbar-nav navbar-right">
+			<li ui-sref-active="active"><a ui-sref="home">home</a></li>
+			<li ui-sref-active="active"><a ui-sref="about">about</a></li>
+			<li ui-sref-active="active"><a ui-sref="list">list</a></li>
+		</ul>
+	</nav>
+</div>

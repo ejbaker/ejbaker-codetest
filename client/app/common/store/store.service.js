@@ -7,7 +7,7 @@ import { isEmpty, isString, sortBy } from "lodash";
 // localStorage methods
 import { list as listResources, save } from "./local";
 // utilities
-import { getByIds, ensureUniq, removeByIds } from "./utils";
+import { getById, getByIds, ensureUniq, removeByIds } from "./utils";
 
 // SERVICE
 // =============================================================================
@@ -59,6 +59,24 @@ class Store {
 		const sortedData = sortBy(this._resources, "added");
 		// return the first 5
 		return Promise.resolve(sortedData.slice(0, count));
+	}
+
+	/**
+	 * Get a resource by ID.
+	 *
+	 * @method get
+	 * @param {array} resourceIds
+	 * @returns {promise}
+	 */
+	get(resourceId) {
+		// error check
+		const existingData = getById(resourceId, this._resources);
+		// make sure data exists
+		if (isEmpty(existingData)) {
+			return Promise.reject("No resource with that ID!");
+		}
+		// and return promise
+		return Promise.resolve(existingData);
 	}
 
 	/**

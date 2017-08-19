@@ -4,7 +4,7 @@
 import angular from "angular";
 import uiRouter from "angular-ui-router";
 // APP ----------------------------------
-import StoreModule from "Common/store";
+import StoreService from "Common/store";
 import homeComponent from "./home.component";
 
 
@@ -12,7 +12,7 @@ import homeComponent from "./home.component";
 // =============================================================================
 const homeModule = angular.module("home", [
 	uiRouter,
-	StoreModule,
+	StoreService,
 ])
 	// config
 	.config(($stateProvider, $urlRouterProvider) => {
@@ -26,16 +26,12 @@ const homeModule = angular.module("home", [
 				component: "home",
 				// load up store on landing page
 				resolve: {
-					items(Store) {
+					items(Store, Errors) {
+						"ngInject";
+
 						return Store.list(5)
-							.then((resources) => {
-								console.log("Success!", resources);
-								return resources;
-							})
-							.catch((err) => {
-								console.log(err);
-								return err;
-							});
+							.then()
+							.catch(err => Errors.catch(err));
 					},
 				},
 			});

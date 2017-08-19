@@ -5,5 +5,9 @@
 </div>
 <div ng-class="{ 'col-md-5': !$ctrl.recent, 'col-md-6': $ctrl.recent }">{{ $ctrl.item.desc }}</div>
 <div class="col-md-1">{{ $ctrl.item.type }}</div>
-<edit-button class="col-md-1" item="$ctrl.item" ng-if="!$ctrl.recent"></edit-button>
-<remove-form class="col-md-1" item="$ctrl.item" ng-if="!$ctrl.recent"></remove-form>
+<div class="col-md-1" ng-if="!$ctrl.recent">
+	<edit-button item="$ctrl.item"></edit-button>
+</div>
+<div class="col-md-1" ng-if="!$ctrl.recent">
+	<remove-form item="$ctrl.item"></remove-form>
+</div>

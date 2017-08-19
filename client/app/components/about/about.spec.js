@@ -53,10 +53,15 @@ function viewBeforeEach() {
  *
  * @method moduleExists
  */
-function moduleExists() {
+function moduleExists(done) {
+	// go to url
 	$location.url("/about");
+	// digest
 	$rootScope.$digest();
+	// should be home
 	expect($state.current.component).to.equal("about");
+	// done
+	done();
 }
 
 /**
@@ -81,8 +86,9 @@ function viewHasTemplate() {
 // TESTS
 // =============================================================================
 
-describe("About", () => {
+describe("About View", () => {
 	// before each
+	beforeEach(window.module("ui.router"));
 	beforeEach(window.module(AboutModule));
 	// inject dependencies
 	beforeEach(inject(($injector) => {
@@ -94,8 +100,8 @@ describe("About", () => {
 	}));
 	// module
 	describe("Module", () => {
-		// top-level specs: i.e., routes, injection, naming
-		it("About component should be visible when navigates to /about", moduleExists);
+		// top-level specs: i.e., states, injection, naming
+		it("About component should be visible when /about", moduleExists);
 	});
 	// controller
 	describe("Controller", () => {

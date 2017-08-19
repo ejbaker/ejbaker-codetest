@@ -2,19 +2,34 @@
 // =============================================================================
 // THIRD-PARTY ----------------------------------
 import angular from "angular";
+import uiRouter from "angular-ui-router";
 // APP ----------------------------------
-import footerComponent from "./footer.component";
+import addForm from "Res/add/form";
+import addComponent from "./add.component";
 
 
 // MODULE
 // =============================================================================
-const footerModule = angular.module("footer", [])
+const addModule = angular.module("add", [
+	uiRouter,
+	addForm,
+])
+	// config
+	.config(($stateProvider) => {
+		"ngInject";
+
+		$stateProvider
+			.state("add", {
+				url: "/add",
+				component: "add",
+			});
+	})
 	// add component
-	.component("footer", footerComponent)
+	.component("add", addComponent)
 	// name
 	.name;
 
 
 // EXPORT
 // =============================================================================
-export default footerModule;
+export default addModule;

@@ -3,25 +3,21 @@
 // THIRD-PARTY ----------------------------------
 import angular from "angular";
 // APP ----------------------------------
-import Navbar from "Common/navbar";
-import Resources from "Common/resources/list";
+import Errors from "./errors.service";
 import Modal from "Common/modal";
-import Store from "Common/store";
-import Errors from "Common/errors";
+
 
 // MODULE
 // =============================================================================
-const commonModule = angular.module("app.common", [
-	Navbar,
-	Resources,
+const errorsModule = angular.module("errors", [
 	Modal,
-	Store,
-	Errors,
 ])
+	// service
+	.service("Errors", Errors)
 	// name
 	.name;
 
 
 // EXPORT
 // =============================================================================
-export default commonModule;
+export default errorsModule;

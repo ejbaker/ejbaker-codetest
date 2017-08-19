@@ -13,15 +13,26 @@ body {
 // basic, shared styling
 body {
 	font-family: "Roboto", sans-serif;
-	color: $lightTextColor;
-	background-color: $lightBgColor;
+	color: #222;
+	background-color: #fff;
 }
 
 // app container
 .app {
 	header {
-		h1 {
+		> h1 {
+			padding: 10px;
 			text-transform: capitalize;
+		}
+		nav {
+			border-radius: 0;
+			padding-bottom: 20px;
+		}
+	}
+	main {
+		padding: 10px;
+		a {
+			font-weight: bold;
 		}
 	}
 }

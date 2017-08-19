@@ -37,7 +37,7 @@ function ctrlHasName() {
  */
 function ctrlHasTemplate() {
 	// tip: use regex to ensure correct bindings are used e.g., {{  }}
-	expect(AddButtonTemplate).to.match(/\$ctrl\.adding/g);
+	expect(AddButtonTemplate).to.match(/ui-sref="add"/g);
 }
 
 /**
@@ -79,7 +79,7 @@ describe("AddButton", () => {
 	});
 	// template
 	describe("Template", () => {
-		it("invokes a template that contains adding flag", ctrlHasTemplate);
+		it("invokes a template", ctrlHasTemplate);
 	});
 	// component
 	describe("Component", () => {

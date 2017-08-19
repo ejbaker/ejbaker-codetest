@@ -5,6 +5,8 @@ import angular from "angular";
 // APP ----------------------------------
 import Home from "Comp/home";
 import About from "Comp/about";
+import Add from "Comp/add";
+import Edit from "Comp/edit";
 import List from "Comp/list";
 
 
@@ -13,6 +15,8 @@ import List from "Comp/list";
 const componentModule = angular.module("app.components", [
 	Home,
 	About,
+	Add,
+	Edit,
 	List,
 ])
 	// name

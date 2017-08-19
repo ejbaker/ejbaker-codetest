@@ -1,15 +1,17 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
-import template from "./footer.html";
-import controller from "./footer.controller";
-import "./footer.scss";
+import template from "./edit.html";
+import controller from "./edit.controller";
+import "./edit.scss";
 
 
 // COMPONENT
 // =============================================================================
-const footerComponent = {
-	bindings: {},
+const editComponent = {
+	bindings: {
+		item: "<",
+	},
 	template,
 	controller,
 };
@@ -17,4 +19,4 @@ const footerComponent = {
 
 // EXPORT
 // =============================================================================
-export default footerComponent;
+export default editComponent;

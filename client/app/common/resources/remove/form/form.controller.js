@@ -4,14 +4,16 @@ class RemoveFormController {
 	/**
 	 * @constructor
 	 * @param {object} Store
+	 * @param {object} Modal
+	 * @param {object} Errors
 	 */
-	// constructor(Modal, Store) {
-	constructor(Store) {
+	constructor(Store, Modal, Errors) {
 		"ngInject";
 
 		// injected dependencies
 		this._Store = Store;
-		// this._Modal = Modal;
+		this._Modal = Modal;
+		this._Errors = Errors;
 	}
 
 	/**
@@ -30,20 +32,16 @@ class RemoveFormController {
 	 * @method onSubmit
 	 */
 	onSubmit() {
-		console.log("Deleting...");
+		// modal options
+		const modalOptions = {
+			actionButtonText: "Delete",
+			bodyText: `Really delete ${this.item.name}?`,
+		};
 		// confirm delete
-		// const deleteConfirmationModal = this._Modal.confirm.delete(() => {
-		// remove from store
-		this._Store.remove(this.item.id)
-			.then((data) => {
-				console.log("Deleted!");
-			})
-			.catch((err) => {
-				console.log("Error catch!", err);
-			});
-		// });
-		// pass context
-		// deleteConfirmationModal(this.resourceName);
+		this._Modal.confirm(modalOptions)
+			.then(() => this._Store.remove(this.item.id))
+			// errors
+			.catch(err => this._Errors.catch(err));
 	}
 }
 

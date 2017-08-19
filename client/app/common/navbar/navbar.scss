@@ -1,22 +1,35 @@
 @import "../common";
 
-.navbar {
-	height: 6.5rem;
+navbar {
+	display: block;
 	background-color: $primaryColor;
-	padding: 1rem;
-
-	.nav-links,
-	.logo {
-		display: inline-block;
+	a {
+		color: #fff;
+		&:hover {
+			color: lighten($primaryColor, 30%);
+		}
 	}
-
-	.logo {
-		color: $lightTextColor;
-		margin-right: 50%;
+	add-button {
+		display: flex;
+		align-items: center;
+		height: 100%;
+		min-height: 50px;
 	}
-
-	.nav-links span {
-		color: $lightTextColor;
-		font-size: 1.6rem;
+	.active {
+		a {
+			background-color: lighten($primaryColor, 30%);
+		}
+	}
+	// overriding bootstrap's very specific styles
+	.nav {
+		> li {
+			> a {
+				&:hover,
+				&:focus {
+					color: $primaryColor;
+					background-color: lighten($primaryColor, 40%);
+				}
+			}
+		}
 	}
 }

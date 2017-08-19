@@ -4,13 +4,17 @@
 import angular from "angular";
 import uiRouter from "angular-ui-router";
 // APP ----------------------------------
-import aboutComponent from "./about.component";
+import StoreService from "Common/store";
+import editForm from "Res/edit/form";
+import editComponent from "./edit.component";
 
 
 // MODULE
 // =============================================================================
-const aboutModule = angular.module("about", [
+const editModule = angular.module("edit", [
 	uiRouter,
+	StoreService,
+	editForm,
 ])
 	// config
 	.config(($stateProvider, $urlRouterProvider) => {
@@ -19,17 +23,26 @@ const aboutModule = angular.module("about", [
 		$urlRouterProvider.otherwise("/");
 
 		$stateProvider
-			.state("about", {
-				url: "/about",
-				component: "about",
+			.state("edit", {
+				url: "/edit/:id",
+				component: "edit",
+				resolve: {
+					item($stateParams, Store, Errors) {
+						"ngInject";
+
+						return Store.get($stateParams.id)
+							.then()
+							.catch(err => Errors.catch(err));
+					},
+				},
 			});
 	})
-	// about component
-	.component("about", aboutComponent)
+	// edit component
+	.component("edit", editComponent)
 	// name
 	.name;
 
 
 // EXPORT
 // =============================================================================
-export default aboutModule;
+export default editModule;

@@ -9,13 +9,17 @@ import getFields from "Res/forms/saveResource";
 class EditResourceController {
 	/**
 	 * @constructor
+	 * @param {object} $state
 	 * @param {object} Store
+	 * @param {object} Errors
 	 */
-	constructor(Store) {
+	constructor($state, Store, Errors) {
 		"ngInject";
 
 		// injected dependencies
+		this._$state = $state;
 		this._Store = Store;
+		this._Errors = Errors;
 	}
 
 	/**
@@ -31,7 +35,7 @@ class EditResourceController {
 		// name form
 		this.form = "editForm";
 		// copy existing item onto the model
-		this.model = JSON.parse(JSON.stringify(this.item));
+		this.model = this.item ? JSON.parse(JSON.stringify(this.item)) : {};
 		// formly options
 		this.options = {};
 		// formly fields
@@ -44,13 +48,10 @@ class EditResourceController {
 	 * @method onSubmit
 	 */
 	onSubmit() {
-		const vm = this;
-		vm.editing = false;
-		vm._Store.edit(vm.model)
-			.then()
-			.catch((err) => {
-				console.log("Error catch!", err);
-			});
+		this.editing = false;
+		this._Store.edit(this.model)
+			.then(() => (this._$state.go("list")))
+			.catch(err => this._Errors.catch(err));
 	}
 }
 

@@ -4,15 +4,15 @@
 // =============================================================================
 // APP ----------------------------------
 import ErrorsModule from "Common/errors";
-import ListModule from "Comp/list";
+import EditModule from "Comp/edit";
 
 
 // PROPERTIES
 // =============================================================================
 
 let Store;
-let $state;
 let $rootScope;
+let $state;
 let $location;
 let $componentController;
 let $compile;
@@ -21,11 +21,6 @@ let controller;
 // view layer specs.
 let scope;
 let template;
-const items = [
-	{
-		name: "list test name",
-	},
-];
 
 
 // METHODS
@@ -38,7 +33,7 @@ const items = [
  * @method ctrlBeforeEach
  */
 function ctrlBeforeEach() {
-	controller = $componentController("list", {
+	controller = $componentController("edit", {
 		$scope: $rootScope.$new(),
 	});
 }
@@ -50,7 +45,7 @@ function ctrlBeforeEach() {
  */
 function viewBeforeEach() {
 	scope = $rootScope.$new();
-	template = $compile("<list></list>")(scope);
+	template = $compile("<edit></edit>")(scope);
 	scope.$apply();
 }
 
@@ -63,13 +58,13 @@ function viewBeforeEach() {
  * @method moduleExists
  */
 function moduleExists(done) {
-	// go to url
-	$location.url("/list");
+	// go to edit
+	$location.url("/edit/some-id");
 	// digest
 	$rootScope.$digest();
-	// should be home
-	expect($state.current.component).to.equal("list");
-	// done
+	// should be edit
+	expect($state.current.component).to.equal("edit");
+	// done!
 	done();
 }
 
@@ -89,18 +84,19 @@ function ctrlHasName() {
  * @method viewHasTemplate
  */
 function viewHasTemplate() {
-	expect(template.find("h1").html()).to.equal("list");
+	expect(template.find("h1").html()).to.equal("edit");
 }
 
 
 // TESTS
 // =============================================================================
 
-describe("List View", () => {
+describe("Edit View", () => {
 	// before each
 	beforeEach(window.module("ui.router"));
 	beforeEach(window.module(ErrorsModule));
-	beforeEach(window.module(ListModule));
+	// beforeEach(window.module("ui.router"));
+	beforeEach(window.module(EditModule));
 	// inject dependencies
 	beforeEach(inject(($injector) => {
 		Store = $injector.get("Store");
@@ -113,7 +109,7 @@ describe("List View", () => {
 	// module
 	describe("Module", () => {
 		// top-level specs: i.e., states, injection, naming
-		it("component should be list", moduleExists);
+		it("default component should be edit", moduleExists);
 	});
 	// controller
 	describe("Controller", () => {
