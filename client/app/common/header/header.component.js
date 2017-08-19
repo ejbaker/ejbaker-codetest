@@ -10,7 +10,7 @@ import "./header.scss";
 // =============================================================================
 const headerComponent = {
 	bindings: {
-		title: "<",
+		pageTitle: "<",
 	},
 	template,
 	controller,
