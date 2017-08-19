@@ -1,5 +1,5 @@
 <div  ng-class="{ 'col-md-4': !$ctrl.recent, 'col-md-5': $ctrl.recent }">
-	<a ng-if="$ctrl.item.type === 'website'" href="$ctrl.item.ref">{{ $ctrl.item.name }}</a>
+	<a ng-if="$ctrl.item.type === 'website'" ng-href="{{ $ctrl.item.ref }}">{{ $ctrl.item.name }}</a>
 	<span ng-if="$ctrl.item.type !== 'website'">{{ $ctrl.item.name }}</span>
 	<span ng-if="$ctrl.item.author || $ctrl.item.creator"><i>by</i> {{ $ctrl.item.author || $ctrl.item.creator }}</span>
 </div>
