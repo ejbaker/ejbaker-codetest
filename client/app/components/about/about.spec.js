@@ -102,7 +102,6 @@ describe("About View", () => {
 	}));
 	// module
 	describe("Module", () => {
-		// top-level specs: i.e., states, injection, naming
 		it("About component should be visible when /about", moduleExists);
 	});
 	// controller

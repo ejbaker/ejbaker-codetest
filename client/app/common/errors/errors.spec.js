@@ -27,9 +27,12 @@ const errorMessage = "Some error or other";
  * @param {function} done
  */
 function errorsNoError() {
-	const errorHandler = Errors.catch("some error");
-	console.log(errorHandler);
-	expect(errorHandler).to.be.a("promise");
+	// catch an "error"
+	Errors.catch(errorMessage);
+	// promise resolved
+	$rootScope.$digest();
+	// expect uibModal to be called
+	expect(Modal.error).to.have.been.called;
 }
 
 
@@ -39,16 +42,16 @@ function errorsNoError() {
 describe("Errors", () => {
 	// before each
 	beforeEach(window.module(ErrorsModule));
-	beforeEach(inject((_$rootScope_, _Errors_, _Modal_) => {
-		$rootScope = _$rootScope_;
-		Errors = _Errors_;
-		Modal = _Modal_;
+	beforeEach(inject(($injector) => {
+		$rootScope = $injector.get("$rootScope");
+		Errors = $injector.get("Errors");
+		Modal = $injector.get("Modal");
 	}));
 
 	// module tests
 	describe("Module", () => {
 		// top-level specs: i.e., routes, injection, naming
-		describe.skip("catch()", () => {
+		describe("catch()", () => {
 			it("should open a modal", errorsNoError);
 		});
 	});

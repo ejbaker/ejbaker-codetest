@@ -46,7 +46,6 @@ class Modal {
 	 * @param {*} modalOptions 
 	 */
 	showModal(modalDefaults = {}, modalOptions) {
-		console.log("Updating modal defaults...");
 		// prevent user from dismissing backdrop
 		modalDefaults.backdrop = "static";
 		// show modal
@@ -61,7 +60,6 @@ class Modal {
 	 * @param {*} modalOptions 
 	 */
 	show(modalDefaults, modalOptions) {
-		console.log("Show...");
 		// preserve class this
 		const vm = this;
 		const defaults = {};
@@ -98,7 +96,6 @@ class Modal {
 				};
 			};
 		}
-		console.log("Returning $uibModal");
 		// return the modal promise
 		return vm._$uibModal.open(defaults).result;
 	}
@@ -113,7 +110,6 @@ class Modal {
 	 * @param {object} options
 	 */
 	confirm(options = {}) {
-		console.log("Confirming...");
 		// modal options
 		const modalOptions = {
 			type: "warn",
@@ -122,7 +118,6 @@ class Modal {
 			headerText: "Please Confirm",
 			bodyText: "Are you sure?",
 		};
-		console.log("Showing modal...");
 		// return promise
 		return this.showModal({
 			windowClass: "modal-warn",

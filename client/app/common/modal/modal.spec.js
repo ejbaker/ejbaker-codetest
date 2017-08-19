@@ -2,8 +2,6 @@
 
 // DEPENDENCIES
 // =============================================================================
-// THIRD-PARTY ----------------------------------
-import { some } from "lodash";
 // ADD ----------------------------------
 import ModalModule from "Common/modal";
 
@@ -12,6 +10,8 @@ import ModalModule from "Common/modal";
 // =============================================================================
 // for the service
 let Modal;
+let $uibModal;
+let $rootScope;
 // added data
 const modalOptions = {
 	actionButtonText: "Delete",
@@ -31,15 +31,30 @@ const modalOptions = {
  */
 function confirmNoErrors(done) {
 	// get the confirm
-	Modal.confirm(modalOptions)
-		.then(() => {
-			// expect resources
-			console.log("Done");
-			// expect(resources).to.be.an("array");
-			// done!
-			done();
-		})
-		.catch(done);
+	Modal.confirm(modalOptions);
+	// promise resolved
+	$rootScope.$digest();
+	// expect uibModal to be called
+	expect($uibModal.open).to.have.been.called;
+	// done!
+	done();
+}
+
+/**
+ * Test the error method - no errors.
+ *
+ * @method errNoErrors
+ * @param {function} done 
+ */
+function errNoErrors(done) {
+	// get the confirm
+	Modal.error(modalOptions);
+	// promise resolved
+	$rootScope.$digest();
+	// expect uibModal to be called
+	expect($uibModal.open).to.have.been.called;
+	// done!
+	done();
 }
 
 
@@ -48,16 +63,23 @@ function confirmNoErrors(done) {
 
 describe("Modal", () => {
 	// before each
+	beforeEach(window.module("ui.bootstrap.modal"));
 	beforeEach(window.module(ModalModule));
-	beforeEach(inject((_Modal_) => {
-		Modal = _Modal_;
+	beforeEach(inject(($injector) => {
+		$rootScope = $injector.get("$rootScope");
+		$uibModal = $injector.get("$uibModal");
+		Modal = $injector.get("Modal");
 	}));
 
 	// module tests
 	describe("Modal", () => {
 		// confirm
-		describe.skip("confirm()", () => {
+		describe("confirm()", () => {
 			it("should open a modal", confirmNoErrors);
+		});
+		// error
+		describe("error()", () => {
+			it("should open a modal", errNoErrors);
 		});
 	});
 });
