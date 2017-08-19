@@ -11,10 +11,8 @@
   "author": "ejbaker",
   "license": "MIT",
   "scripts": {
-	"cleanup": "rm -rf node_modules/gh-pages/.cache",
-	"predeploy": "yarn build",
-	"deploy": "yarn cleanup && gh-pages -d dist",
     "build": "gulp webpack",
+    "postbuild": "cp -R dist/* gh-pages/",
     "component": "gulp component",
     "serve": "gulp serve",
     "start": "gulp serve",
