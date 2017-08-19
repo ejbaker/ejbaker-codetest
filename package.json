@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "ejbaker-ct",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "description": "AngularJS 1.x code test for Gloo.",
   "main": "index.js",
   "repository": {
@@ -11,7 +11,9 @@
   "author": "ejbaker",
   "license": "MIT",
   "scripts": {
-    "deploy": "gh-pages -d dist",
+	"cleanup": "rm -rf node_modules/gh-pages/.cache",
+	"predeploy": "yarn build",
+	"deploy": "yarn cleanup && gh-pages -d dist",
     "build": "gulp webpack",
     "component": "gulp component",
     "serve": "gulp serve",

@@ -5,6 +5,13 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
 	devtool: "source-map",
 	entry: {},
+	resolve: {
+		alias: {
+			Common: path.resolve(__dirname, "client/app/common"),
+			Comp: path.resolve(__dirname, "client/app/components"),
+			Res: path.resolve(__dirname, "client/app/common/resources"),
+		},
+	},
 	module: {
 		loaders: [
 			{ test: /\.js$/, exclude: [/app\/lib/, /node_modules/], loader: "ng-annotate!babel" },

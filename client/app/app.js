@@ -19,11 +19,5 @@ angular.module("app", [
 	Common,
 	Components,
 ])
-	// configure app to work without hashes
-	.config(($locationProvider) => {
-		"ngInject";
-
-		$locationProvider.html5Mode(true).hashPrefix("!");
-	})
 	// add component
 	.component("app", AppComponent);

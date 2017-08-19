@@ -1,11 +1,8 @@
 <div class="container">
-	<div class="row" ng-if="!$ctrl.items.length">
+	<div ng-if="!$ctrl.items.length" class="row">
 		<div class="col-xs-12">No resources have been added yet!</div>
 	</div>
-	<!--
-	<row-header headers="$ctrl.rowHeaders" sort-type="$ctrl.sortType" sort-reverse="$ctrl.sortReverse"></row-header>
-	-->
-	<div class="row row-header">
+	<div ng-if="$ctrl.items.length" class="row row-header">
 		<div ng-repeat="header in $ctrl.rowHeaders" class="{{ header.classes }}" ng-click="$ctrl.changeSort(header.key)">
 			{{ header.label }}
 			<span ng-show="$ctrl.sortType[0] === header.key" class="caret" ng-class="{ reverse: $ctrl.sortReverse }" aria-hidden="true"></span>
