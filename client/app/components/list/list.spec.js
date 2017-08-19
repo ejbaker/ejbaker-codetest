@@ -4,6 +4,7 @@
 // =============================================================================
 // APP ----------------------------------
 import ErrorsModule from "Common/errors";
+import HeaderModule from "Common/header";
 import ListModule from "Comp/list";
 
 
@@ -100,6 +101,7 @@ describe("List View", () => {
 	// before each
 	beforeEach(window.module("ui.router"));
 	beforeEach(window.module(ErrorsModule));
+	beforeEach(window.module(HeaderModule));
 	beforeEach(window.module(ListModule));
 	// inject dependencies
 	beforeEach(inject(($injector) => {

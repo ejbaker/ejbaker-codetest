@@ -2,28 +2,22 @@
 // =============================================================================
 // THIRD-PARTY ----------------------------------
 import angular from "angular";
+import uiRouter from "angular-ui-router";
 // APP ----------------------------------
-import Header from "Common/header";
-import Navbar from "Common/navbar";
-import Resources from "Common/resources/list";
-import Modal from "Common/modal";
-import Store from "Common/store";
-import Errors from "Common/errors";
+import headerComponent from "./header.component";
+
 
 // MODULE
 // =============================================================================
-const commonModule = angular.module("app.common", [
-	Header,
-	Navbar,
-	Resources,
-	Modal,
-	Store,
-	Errors,
+const headerModule = angular.module("header", [
+	uiRouter,
 ])
+	// add component
+	.component("header", headerComponent)
 	// name
 	.name;
 
 
 // EXPORT
 // =============================================================================
-export default commonModule;
+export default headerModule;

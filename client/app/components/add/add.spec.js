@@ -4,6 +4,7 @@
 // =============================================================================
 // APP ----------------------------------
 import ErrorsModule from "Common/errors";
+import HeaderModule from "Common/header";
 import AddModule from "Comp/add";
 
 
@@ -95,7 +96,7 @@ describe("Add View", () => {
 	// before each
 	beforeEach(window.module("ui.router"));
 	beforeEach(window.module(ErrorsModule));
-	// beforeEach(window.module("ui.router"));
+	beforeEach(window.module(HeaderModule));
 	beforeEach(window.module(AddModule));
 	// inject dependencies
 	beforeEach(inject(($injector) => {

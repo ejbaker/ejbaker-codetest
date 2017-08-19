@@ -1,6 +1,7 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
+import HeaderModule from "Common/header";
 import AboutModule from "Comp/about";
 
 
@@ -90,6 +91,7 @@ describe("About View", () => {
 	// before each
 	beforeEach(window.module("ui.router"));
 	beforeEach(window.module(AboutModule));
+	beforeEach(window.module(HeaderModule));
 	// inject dependencies
 	beforeEach(inject(($injector) => {
 		$rootScope = $injector.get("$rootScope");

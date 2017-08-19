@@ -1,17 +1,17 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
-import <%= upCaseName %>Module from "./index";
-import <%= upCaseName %>Controller from "./<%= name %>.controller";
-import <%= upCaseName %>Component from "./<%= name %>.component";
-import <%= upCaseName %>Template from "./<%= name %>.html";
+import HeaderModule from "./index";
+import HeaderController from "./header.controller";
+import HeaderComponent from "./header.component";
+import HeaderTemplate from "./header.html";
 
 
 // PROPERTIES
 // =============================================================================
 let $rootScope;
 let makeController;
-const component = <%= upCaseName %>Component;
+const component = HeaderComponent;
 
 
 // METHODS
@@ -35,7 +35,7 @@ function ctrlHasName() {
  */
 function ctrlHasTemplate() {
 	// tip: use regex to ensure correct bindings are used e.g., {{  }}
-	expect(<%= upCaseName %>Template).to.match(/{{\s?\$ctrl\.name\s?}}/g);
+	expect(HeaderTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
 }
 
 /**
@@ -44,7 +44,7 @@ function ctrlHasTemplate() {
  * @method compHasTemplate
  */
 function compHasTemplate() {
-	expect(component.template).to.equal(<%= upCaseName %>Template);
+	expect(component.template).to.equal(HeaderTemplate);
 }
 
 /**
@@ -53,19 +53,19 @@ function compHasTemplate() {
  * @method compHasController
  */
 function compHasController() {
-	expect(component.controller).to.equal(<%= upCaseName %>Controller);
+	expect(component.controller).to.equal(HeaderController);
 }
 
 
 // TESTS
 // =============================================================================
 
-describe("<%= upCaseName %>", () => {
+describe("Header", () => {
 	// before
-	beforeEach(window.module(<%= upCaseName %>Module));
+	beforeEach(window.module(HeaderModule));
 	beforeEach(inject((_$rootScope_) => {
 		$rootScope = _$rootScope_;
-		makeController = () => (new <%= upCaseName %>Controller());
+		makeController = () => (new HeaderController());
 	}));
 	// module
 	describe("Module", () => {
@@ -73,11 +73,11 @@ describe("<%= upCaseName %>", () => {
 	});
 	// controller
 	describe("Controller", () => {
-		it("has a name property [REMOVE]", ctrlHasName);
+		it("has a name property", ctrlHasName);
 	});
 	// template
 	describe("Template", () => {
-		it("has name in template [REMOVE]", ctrlHasTemplate);
+		it("has name in template", ctrlHasTemplate);
 	});
 	// component
 	describe("Component", () => {

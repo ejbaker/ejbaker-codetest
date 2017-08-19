@@ -36,7 +36,8 @@ const paths = {
 	],
 	output: root,
 	blankTemplates: path.join(__dirname, "generator", "component/**/*.**"),
-	dest: path.join(__dirname, "dist"),
+	dest: "/dist/*",
+	destExclude: "!/dist/.git/",
 };
 
 // use webpack.config.js to build modules
@@ -102,18 +103,13 @@ gulp.task("component", () => {
 			upCaseName: cap(name),
 		}))
 		.pipe(rename((currPath) => {
-			if (currPath.basename === "temp") {
-				currPath.basename = "index";
-			}
-			else {
-				currPath.basename = currPath.basename.replace("temp", name);
-			}
+			currPath.basename = currPath.basename.replace("temp", name);
 		}))
 		.pipe(gulp.dest(destPath));
 });
 
 gulp.task("clean", (cb) => {
-	del([paths.dest]).then((dest) => {
+	del([paths.dest, paths.destExclude]).then((dest) => {
 		gutil.log("[clean]", dest);
 		cb();
 	});
