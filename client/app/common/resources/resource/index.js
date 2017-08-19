@@ -3,15 +3,15 @@
 // THIRD-PARTY ----------------------------------
 import angular from "angular";
 // APP ----------------------------------
-import resourceComponent from "Res/resource/resource.component";
+import resourceComponent from "./resource.component";
 import editButton from "Res/edit/button";
-import remove from "Res/remove/form";
+import removeButton from "Res/remove/button";
 
 // MODULE
 // =============================================================================
 const resourceModule = angular.module("resource", [
 	editButton,
-	remove,
+	removeButton,
 ])
 	// add component
 	.component("resource", resourceComponent)

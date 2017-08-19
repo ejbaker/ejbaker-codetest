@@ -1,6 +1,6 @@
 // CONTROLLER
 // =============================================================================
-class RemoveFormController {
+class RemoveButtonController {
 	/**
 	 * @constructor
 	 * @param {object} Store
@@ -23,7 +23,7 @@ class RemoveFormController {
 	 */
 	$onInit() {
 		// controller name
-		this.name = "removeForm";
+		this.name = "removeButton";
 	}
 
 	/**
@@ -48,4 +48,4 @@ class RemoveFormController {
 
 // EXPORT
 // =============================================================================
-export default RemoveFormController;
+export default RemoveButtonController;

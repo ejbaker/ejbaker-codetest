@@ -1,9 +1,9 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
-import template from "Res/list/resources.html";
-import controller from "Res/list/resources.controller";
-import "Res/list/resources.scss";
+import template from "./resources.html";
+import controller from "./resources.controller";
+import "./resources.scss";
 
 
 // COMPONENT

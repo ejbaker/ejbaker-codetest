@@ -3,7 +3,7 @@
 // THIRD-PARTY ----------------------------------
 import angular from "angular";
 // APP ----------------------------------
-import addButtonComponent from "Res/add/button/button.component";
+import addButtonComponent from "./button.component";
 
 
 // MODULE

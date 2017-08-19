@@ -1,14 +1,13 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
-import template from "Res/remove/form/form.html";
-import controller from "Res/remove/form/form.controller";
-import "Res/remove/form/form.scss";
+import template from "./button.html";
+import controller from "./button.controller";
 
 
 // COMPONENT
 // =============================================================================
-const removeFormComponent = {
+const removeButtonComponent = {
 	bindings: {
 		item: "<",
 	},
@@ -19,4 +18,4 @@ const removeFormComponent = {
 
 // EXPORT
 // =============================================================================
-export default removeFormComponent;
+export default removeButtonComponent;

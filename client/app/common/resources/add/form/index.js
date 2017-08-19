@@ -8,7 +8,7 @@ import formlyBootstrap from "angular-formly-templates-bootstrap";
 // APP ----------------------------------
 import Store from "Common/store";
 import Errors from "Common/errors";
-import addFormComponent from "Res/add/form/form.component";
+import addFormComponent from "./form.component";
 
 
 // MODULE

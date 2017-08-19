@@ -6,6 +6,7 @@ import { assignIn } from "lodash";
 // APP ----------------------------------
 import template from "./modal.html";
 
+
 // SERVICE
 // =============================================================================
 class Modal {

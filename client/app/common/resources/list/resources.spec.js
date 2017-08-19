@@ -1,10 +1,10 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
-import ResourcesModule from "Res/list";
-import ResourcesController from "Res/list/resources.controller";
-import ResourcesComponent from "Res/list/resources.component";
-import ResourcesTemplate from "Res/list/resources.html";
+import ResourcesModule from "./index";
+import ResourcesController from "./resources.controller";
+import ResourcesComponent from "./resources.component";
+import ResourcesTemplate from "./resources.html";
 
 
 // PROPERTIES

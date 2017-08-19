@@ -3,7 +3,6 @@
 // APP ----------------------------------
 import template from "./edit.html";
 import controller from "./edit.controller";
-import "./edit.scss";
 
 
 // COMPONENT

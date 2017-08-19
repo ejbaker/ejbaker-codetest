@@ -10,6 +10,7 @@ import Modal from "Common/modal";
 import Store from "Common/store";
 import Errors from "Common/errors";
 
+
 // MODULE
 // =============================================================================
 const commonModule = angular.module("app.common", [

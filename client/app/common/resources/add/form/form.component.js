@@ -1,9 +1,8 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
-import template from "Res/add/form/form.html";
-import controller from "Res/add/form/form.controller";
-import "Res/add/form/form.scss";
+import template from "./form.html";
+import controller from "./form.controller";
 
 
 // COMPONENT

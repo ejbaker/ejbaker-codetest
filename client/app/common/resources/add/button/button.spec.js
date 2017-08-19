@@ -1,10 +1,10 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
-import AddButtonModule from "Res/add/button";
-import AddButtonController from "Res/add/button/button.controller";
-import AddButtonComponent from "Res/add/button/button.component";
-import AddButtonTemplate from "Res/add/button/button.html";
+import AddButtonModule from "./index";
+import AddButtonController from "./button.controller";
+import AddButtonComponent from "./button.component";
+import AddButtonTemplate from "./button.html";
 
 
 // PROPERTIES

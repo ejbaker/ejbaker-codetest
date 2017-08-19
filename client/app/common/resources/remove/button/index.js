@@ -5,21 +5,21 @@ import angular from "angular";
 // APP ----------------------------------
 import Store from "Common/store";
 import Modal from "Common/modal";
-import removeFormComponent from "Res/remove/form/form.component";
+import removeButtonComponent from "./button.component";
 
 
 // MODULE
 // =============================================================================
-const removeFormModule = angular.module("removeForm", [
+const removeButtonModule = angular.module("removeButton", [
 	Store,
 	Modal,
 ])
 	// add component
-	.component("removeForm", removeFormComponent)
+	.component("removeButton", removeButtonComponent)
 	// name
 	.name;
 
 
 // EXPORT
 // =============================================================================
-export default removeFormModule;
+export default removeButtonModule;

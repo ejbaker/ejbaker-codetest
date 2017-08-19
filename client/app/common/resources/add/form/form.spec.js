@@ -1,10 +1,10 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
-import AddFormModule from "Res/add/form";
-import AddFormController from "Res/add/form/form.controller";
-import AddFormComponent from "Res/add/form/form.component";
-import AddFormTemplate from "Res/add/form/form.html";
+import AddFormModule from "./index";
+import AddFormController from "./form.controller";
+import AddFormComponent from "./form.component";
+import AddFormTemplate from "./form.html";
 
 
 // PROPERTIES

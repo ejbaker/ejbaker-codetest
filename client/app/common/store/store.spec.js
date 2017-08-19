@@ -5,7 +5,7 @@
 // THIRD-PARTY ----------------------------------
 import { some } from "lodash";
 // ADD ----------------------------------
-import StoreModule from "Common/store";
+import StoreModule from "./index";
 
 
 // PROPERTIES

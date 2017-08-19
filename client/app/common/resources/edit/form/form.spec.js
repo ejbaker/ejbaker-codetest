@@ -2,10 +2,10 @@
 // =============================================================================
 // APP ----------------------------------
 import ErrorsModule from "Common/errors";
-import EditFormModule from "Res/edit/form";
-import EditFormController from "Res/edit/form/form.controller";
-import EditFormComponent from "Res/edit/form/form.component";
-import EditFormTemplate from "Res/edit/form/form.html";
+import EditFormModule from "./index";
+import EditFormController from "./form.controller";
+import EditFormComponent from "./form.component";
+import EditFormTemplate from "./form.html";
 
 
 // PROPERTIES

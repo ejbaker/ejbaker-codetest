@@ -1,9 +1,8 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
-import template from "Res/edit/button/button.html";
-import controller from "Res/edit/button/button.controller";
-import "Res/edit/button/button.scss";
+import template from "./button.html";
+import controller from "./button.controller";
 
 
 // COMPONENT

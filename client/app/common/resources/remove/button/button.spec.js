@@ -2,17 +2,17 @@
 // =============================================================================
 // APP ----------------------------------
 import ErrorsModule from "Common/errors";
-import RemoveFormModule from "Res/remove/form";
-import RemoveFormController from "Res/remove/form/form.controller";
-import RemoveFormComponent from "Res/remove/form/form.component";
-import RemoveFormTemplate from "Res/remove/form/form.html";
+import RemoveButtonModule from "./index";
+import RemoveButtonController from "./button.controller";
+import RemoveButtonComponent from "./button.component";
+import RemoveButtonTemplate from "./button.html";
 
 
 // PROPERTIES
 // =============================================================================
 let $rootScope;
 let controller;
-const component = RemoveFormComponent;
+const component = RemoveButtonComponent;
 
 
 // METHODS
@@ -38,7 +38,7 @@ function ctrlHasId() {
  */
 function ctrlHasTemplate() {
 	// tip: use regex to ensure correct bindings are used e.g., {{  }}
-	expect(RemoveFormTemplate).to.match(/\$ctrl\.onSubmit()/g);
+	expect(RemoveButtonTemplate).to.match(/\$ctrl\.onSubmit()/g);
 }
 
 /**
@@ -47,7 +47,7 @@ function ctrlHasTemplate() {
  * @method compHasTemplate
  */
 function compHasTemplate() {
-	expect(component.template).to.equal(RemoveFormTemplate);
+	expect(component.template).to.equal(RemoveButtonTemplate);
 }
 
 /**
@@ -56,20 +56,20 @@ function compHasTemplate() {
  * @method compHasController
  */
 function compHasController() {
-	expect(component.controller).to.equal(RemoveFormController);
+	expect(component.controller).to.equal(RemoveButtonController);
 }
 
 
 // TESTS
 // =============================================================================
 
-describe("RemoveForm", () => {
+describe("RemoveButton", () => {
 	// before
 	beforeEach(window.module(ErrorsModule));
-	beforeEach(window.module(RemoveFormModule));
+	beforeEach(window.module(RemoveButtonModule));
 	beforeEach(inject((_$rootScope_, _$componentController_) => {
 		$rootScope = _$rootScope_;
-		controller = _$componentController_("removeForm", null, { item: { id: "some-id", name: "Some Name" } });
+		controller = _$componentController_("removeButton", null, { item: { id: "some-id", name: "Some Name" } });
 	}));
 	// module
 	describe("Module", () => {

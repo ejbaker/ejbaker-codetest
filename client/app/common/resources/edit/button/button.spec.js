@@ -1,10 +1,10 @@
 // DEPENDENCIES
 // =============================================================================
 // APP ----------------------------------
-import EditButtonModule from "Res/edit/button";
-import EditButtonController from "Res/edit/button/button.controller";
-import EditButtonComponent from "Res/edit/button/button.component";
-import EditButtonTemplate from "Res/edit/button/button.html";
+import EditButtonModule from "./index";
+import EditButtonController from "./button.controller";
+import EditButtonComponent from "./button.component";
+import EditButtonTemplate from "./button.html";
 
 
 // PROPERTIES

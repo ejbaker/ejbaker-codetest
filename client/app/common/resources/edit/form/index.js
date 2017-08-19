@@ -6,7 +6,7 @@ import formly from "angular-formly";
 import formlyBootstrap from "angular-formly-templates-bootstrap";
 // APP ----------------------------------
 import Store from "Common/store";
-import editFormComponent from "Res/edit/form/form.component";
+import editFormComponent from "./form.component";
 
 
 // MODULE
