@@ -36,8 +36,8 @@ const paths = {
 	],
 	output: root,
 	blankTemplates: path.join(__dirname, "generator", "component/**/*.**"),
-	dest: "/dist/*",
-	destExclude: "!/dist/.git/",
+	dest: "dist/**",
+	destExclude: "!dist/.git",
 };
 
 // use webpack.config.js to build modules
@@ -109,7 +109,7 @@ gulp.task("component", () => {
 });
 
 gulp.task("clean", (cb) => {
-	del([paths.dest, paths.destExclude]).then((dest) => {
+	del([paths.dest]).then((dest) => {
 		gutil.log("[clean]", dest);
 		cb();
 	});
