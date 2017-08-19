@@ -2,6 +2,8 @@
 
 // DEPENDENCIES
 // =============================================================================
+// THIRD-PARTY ----------------------------------
+import uibModal from "angular-ui-bootstrap/src/modal";
 // ADD ----------------------------------
 import ModalModule from "Common/modal";
 
@@ -63,7 +65,7 @@ function errNoErrors(done) {
 
 describe("Modal", () => {
 	// before each
-	beforeEach(window.module("ui.bootstrap.modal"));
+	beforeEach(window.module(uibModal));
 	beforeEach(window.module(ModalModule));
 	beforeEach(inject(($injector) => {
 		$rootScope = $injector.get("$rootScope");

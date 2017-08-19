@@ -2,6 +2,8 @@
 
 // DEPENDENCIES
 // =============================================================================
+// THIRD-PARTY ----------------------------------
+import uiRouter from "angular-ui-router";
 // APP ----------------------------------
 import ErrorsModule from "Common/errors";
 import HeaderModule from "Common/header";
@@ -11,7 +13,6 @@ import AddModule from "Comp/add";
 // PROPERTIES
 // =============================================================================
 
-let Store;
 let $rootScope;
 let $state;
 let $location;
@@ -94,13 +95,12 @@ function viewHasTemplate() {
 
 describe("Add View", () => {
 	// before each
-	beforeEach(window.module("ui.router"));
+	beforeEach(window.module(uiRouter));
 	beforeEach(window.module(ErrorsModule));
 	beforeEach(window.module(HeaderModule));
 	beforeEach(window.module(AddModule));
 	// inject dependencies
 	beforeEach(inject(($injector) => {
-		Store = $injector.get("Store");
 		$rootScope = $injector.get("$rootScope");
 		$componentController = $injector.get("$componentController");
 		// $state = $injector.get("$state");

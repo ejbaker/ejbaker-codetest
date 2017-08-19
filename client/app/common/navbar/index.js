@@ -4,15 +4,15 @@
 import angular from "angular";
 import uiRouter from "angular-ui-router";
 // APP ----------------------------------
+import AddButton from "Res/add/button";
 import navbarComponent from "./navbar.component";
-import addButton from "Res/add/button";
 
 
 // MODULE
 // =============================================================================
 const navbarModule = angular.module("navbar", [
 	uiRouter,
-	addButton,
+	AddButton,
 ])
 	// add component
 	.component("navbar", navbarComponent)

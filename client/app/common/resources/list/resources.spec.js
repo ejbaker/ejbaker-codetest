@@ -9,7 +9,6 @@ import ResourcesTemplate from "./resources.html";
 
 // PROPERTIES
 // =============================================================================
-let $rootScope;
 let makeController;
 const component = ResourcesComponent;
 
@@ -25,6 +24,7 @@ const component = ResourcesComponent;
  */
 function ctrlHasName() {
 	const controller = makeController();
+	controller.$onInit();
 	expect(controller).to.have.property("name");
 }
 
@@ -63,8 +63,7 @@ function compHasController() {
 describe("Resources", () => {
 	// before
 	beforeEach(window.module(ResourcesModule));
-	beforeEach(inject((_$rootScope_) => {
-		$rootScope = _$rootScope_;
+	beforeEach(inject(() => {
 		makeController = () => (new ResourcesController());
 	}));
 	// module

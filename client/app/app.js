@@ -7,7 +7,7 @@ import angularFormly from "angular-formly";
 // APP ----------------------------------
 import Common from "Common";
 import Components from "Comp";
-import AppComponent from "./app.component";
+import appComponent from "./app.component";
 import "normalize.css";
 
 
@@ -20,4 +20,4 @@ angular.module("app", [
 	Components,
 ])
 	// add component
-	.component("app", AppComponent);
+	.component("app", appComponent);

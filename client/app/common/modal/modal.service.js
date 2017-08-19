@@ -21,16 +21,16 @@ class Modal {
 		this._$uibModal = $uibModal;
 
 		// PROPERTIES ----------------------------------
-		// default options
-		this.modalDefaults = {
+		// default settings for creating the $uibModal
+		this._modalSettings = {
 			backdrop: true,
 			keyboard: true,
 			modalFade: true,
 			template,
 			windowClass: "modal-secondary",
 		};
-		// default options
-		this.modalOptions = {
+		// default options for the modal scope
+		this._modalOptions = {
 			closeButtonText: "Cancel",
 			actionButtonText: "OK",
 			headerText: "Proceed?",
@@ -38,47 +38,57 @@ class Modal {
 		};
 	}
 
+
+	// METHODS
+	// =============================================================================
+	// PRIVATE (but still exposed) ----------------------------------
+
 	/**
-	 * Pass parameters to show.
+	 * Pass parameters to show().
 	 *
 	 * @method showModal
-	 * @param {*} modalDefaults 
+	 * @param {*} modalOptions 
 	 * @param {*} modalOptions 
 	 */
-	showModal(modalDefaults = {}, modalOptions) {
+	showModal(modalOptions = {}, instanceOptions) {
 		// prevent user from dismissing backdrop
-		modalDefaults.backdrop = "static";
+		modalOptions.backdrop = "static";
 		// show modal
-		return this.show(modalDefaults, modalOptions);
+		return this.show(modalOptions, instanceOptions);
 	}
 
 	/**
 	 * Show a given modal.
 	 *
 	 * @method show
-	 * @param {*} modalDefaults 
+	 * @param {*} modalSettings 
 	 * @param {*} modalOptions 
 	 */
-	show(modalDefaults, modalOptions) {
+	show(modalSettings, modalOptions) {
 		// preserve class this
 		const vm = this;
-		const defaults = {};
+		// modal settings
+		const settings = {};
+		// modal options
 		const options = {};
 		// combine global defaults with any customizations
-		assignIn(defaults, vm.modalDefaults, modalDefaults);
-		assignIn(options, vm.modalOptions, modalOptions);
+		assignIn(settings, vm._modalSettings, modalSettings);
+		assignIn(options, vm._modalOptions, modalOptions);
 		// add controller
-		if (!defaults.controller) {
-			defaults.controllerAs = "$ctrl";
-			defaults.bindToController = true;
-			defaults.controller = function ($uibModalInstance) {
+		if (!settings.controller) {
+			// syntax to make this directive more component-like
+			// for more consistent coding
+			settings.controllerAs = "$ctrl";
+			settings.bindToController = true;
+			// controller
+			settings.controller = function ($uibModalInstance) {
 				"ngInject";
 
-				// set modal options
+				// set modal scope
 				this.modalOptions = options;
 
 				/**
-				 * Confirm.
+				 * Perform the action.
 				 *
 				 * @method ok
 				 */
@@ -96,20 +106,21 @@ class Modal {
 				};
 			};
 		}
-		// return the modal promise
-		return vm._$uibModal.open(defaults).result;
+
+		// return the $uibModal.open() promise
+		return vm._$uibModal.open(settings).result;
 	}
 
-	// METHODS
-	// =============================================================================
+
+	// PUBLIC ----------------------------------
 
 	/**
 	 * Confirm an action.
 	 *
 	 * @method confirm
-	 * @param {object} options
+	 * @param {object} userOptions (optional)
 	 */
-	confirm(options = {}) {
+	confirm(userOptions = {}) {
 		// modal options
 		const modalOptions = {
 			type: "warn",
@@ -118,19 +129,19 @@ class Modal {
 			headerText: "Please Confirm",
 			bodyText: "Are you sure?",
 		};
-		// return promise
+		// return promise with combined options
 		return this.showModal({
 			windowClass: "modal-warn",
-		}, assignIn({}, modalOptions, options));
+		}, assignIn({}, modalOptions, userOptions));
 	}
 
 	/**
 	 * Display an error.
 	 * 
 	 * @method error
-	 * @param {object} options
+	 * @param {object} userOptions (optional)
 	 */
-	error(options = {}) {
+	error(userOptions = {}) {
 		// modal options
 		const modalOptions = {
 			closeButtonText: false,
@@ -138,10 +149,10 @@ class Modal {
 			headerText: "Error",
 			bodyText: "Something went wrong.",
 		};
-		// return promise
+		// return promise with combined options
 		return this.showModal({
 			windowClass: "modal-danger",
-		}, assignIn({}, modalOptions, options));
+		}, assignIn({}, modalOptions, userOptions));
 	}
 }
 

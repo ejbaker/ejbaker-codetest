@@ -2,13 +2,6 @@
 // =============================================================================
 class AddButtonController {
 	/**
-	 * @constructor
-	 */
-	constructor() {
-		"ngInject";
-	}
-
-	/**
 	 * Fires when the controller is finished initializing.
 	 *
 	 * @method $onInit

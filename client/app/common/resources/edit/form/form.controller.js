@@ -30,8 +30,6 @@ class EditResourceController {
 	$onInit() {
 		// controller name
 		this.name = "editResource";
-		// initialize editing
-		this.editing = false;
 		// name form
 		this.form = "editForm";
 		// copy existing item onto the model
@@ -48,7 +46,6 @@ class EditResourceController {
 	 * @method onSubmit
 	 */
 	onSubmit() {
-		this.editing = false;
 		this._Store.edit(this.model)
 			.then(() => (this._$state.go("list")))
 			.catch(err => this._Errors.catch(err));

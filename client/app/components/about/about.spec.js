@@ -1,5 +1,7 @@
 // DEPENDENCIES
 // =============================================================================
+// THIRD-PARTY ----------------------------------
+import uiRouter from "angular-ui-router";
 // APP ----------------------------------
 import HeaderModule from "Common/header";
 import AboutModule from "Comp/about";
@@ -89,7 +91,7 @@ function viewHasTemplate() {
 
 describe("About View", () => {
 	// before each
-	beforeEach(window.module("ui.router"));
+	beforeEach(window.module(uiRouter));
 	beforeEach(window.module(AboutModule));
 	beforeEach(window.module(HeaderModule));
 	// inject dependencies

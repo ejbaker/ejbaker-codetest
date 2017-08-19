@@ -25,6 +25,7 @@ const component = HeaderComponent;
  */
 function ctrlHasName() {
 	const controller = makeController();
+	controller.$onInit();
 	expect(controller).to.have.property("name");
 }
 
@@ -34,8 +35,7 @@ function ctrlHasName() {
  * @method ctrlHasTemplate
  */
 function ctrlHasTemplate() {
-	// tip: use regex to ensure correct bindings are used e.g., {{  }}
-	expect(HeaderTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
+	expect(HeaderTemplate).to.match(/{{\s?\$ctrl\.title\s?}}/g);
 }
 
 /**

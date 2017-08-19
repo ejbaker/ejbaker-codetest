@@ -1,5 +1,7 @@
 // DEPENDENCIES
 // =============================================================================
+// THIRD-PARTY ----------------------------------
+import uiRouter from "angular-ui-router";
 // APP ----------------------------------
 import ErrorsModule from "Common/errors";
 import EditFormModule from "./index";
@@ -73,7 +75,7 @@ function compHasController() {
 
 describe("EditForm", () => {
 	// before
-	beforeEach(window.module("ui.router"));
+	beforeEach(window.module(uiRouter));
 	beforeEach(window.module(ErrorsModule));
 	beforeEach(window.module(EditFormModule));
 	beforeEach(inject(($injector) => {

@@ -9,8 +9,6 @@ class EditButtonController {
 	$onInit() {
 		// controller name
 		this.name = "editButton";
-		// initialize editing
-		this.editing = false;
 	}
 }
 

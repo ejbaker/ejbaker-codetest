@@ -30,8 +30,6 @@ class AddFormController {
 	$onInit() {
 		// controller name
 		this.name = "addForm";
-		// initialize adding
-		this.adding = false;
 		// name form
 		this.form = "addForm";
 		// model
@@ -48,7 +46,6 @@ class AddFormController {
 	 * @method onSubmit
 	 */
 	onSubmit() {
-		this.adding = false;
 		this._Store.add(this.model)
 			.then(() => (this._$state.go("list")))
 			.catch(err => this._Errors.catch(err));

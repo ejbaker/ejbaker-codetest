@@ -2,9 +2,11 @@
 // =============================================================================
 class HeaderController {
 	/**
-	 * @constructor
+	 * Fires when the controller is finished initializing.
+	 *
+	 * @method $onInit
 	 */
-	constructor() {
+	$onInit() {
 		this.name = "header";
 	}
 }

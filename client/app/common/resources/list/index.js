@@ -3,14 +3,14 @@
 // THIRD-PARTY ----------------------------------
 import angular from "angular";
 // APP ----------------------------------
+import Resource from "Res/resource";
 import resourcesComponent from "./resources.component";
-import resource from "Res/resource";
 
 
 // MODULE
 // =============================================================================
 const resourcesModule = angular.module("resources", [
-	resource,
+	Resource,
 ])
 	// add component
 	.component("resources", resourcesComponent)

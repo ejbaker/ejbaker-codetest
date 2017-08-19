@@ -2,20 +2,14 @@
 // =============================================================================
 class ResourcesController {
 	/**
-	 * @constructor
-	 * @param {object} resources
-	 */
-	constructor() {
-		"ngInject";
-
-		this.name = "resources";
-	}
-
-	/**
 	 * @method $onInit
 	 */
 	$onInit() {
+		// name
+		this.name = "resources";
+		// view type controls how much detail we see
 		const viewAll = this.type === "all";
+		// sorting
 		this.sortType = ["type", "name"];
 		this.sortReverse = false;
 		// headers
@@ -36,7 +30,7 @@ class ResourcesController {
 				classes: "col-md-1",
 			},
 		];
-		// conditionally add manage row
+		// conditionally add "manage" row
 		if (viewAll) {
 			this.rowHeaders.push({
 				label: "Manage",

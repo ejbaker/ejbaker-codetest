@@ -4,7 +4,7 @@
 import angular from "angular";
 import AngularUUID from "angular-uuid"; // eslint-disable-line no-unused-vars
 // APP ----------------------------------
-import StoreService from "./store.service";
+import storeService from "./store.service";
 
 
 // MODULE
@@ -18,7 +18,7 @@ const storeModule = angular.module("store", [
 	// storage key constant
 	.constant("STORAGE_KEY", "ejbaker-codetest-resources")
 	// service
-	.service("Store", StoreService)
+	.service("Store", storeService)
 	// name
 	.name;
 

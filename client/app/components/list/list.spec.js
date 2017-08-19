@@ -2,6 +2,8 @@
 
 // DEPENDENCIES
 // =============================================================================
+// THIRD-PARTY ----------------------------------
+import uiRouter from "angular-ui-router";
 // APP ----------------------------------
 import ErrorsModule from "Common/errors";
 import HeaderModule from "Common/header";
@@ -11,7 +13,6 @@ import ListModule from "Comp/list";
 // PROPERTIES
 // =============================================================================
 
-let Store;
 let $state;
 let $rootScope;
 let $location;
@@ -22,11 +23,6 @@ let controller;
 // view layer specs.
 let scope;
 let template;
-const items = [
-	{
-		name: "list test name",
-	},
-];
 
 
 // METHODS
@@ -99,13 +95,12 @@ function viewHasTemplate() {
 
 describe("List View", () => {
 	// before each
-	beforeEach(window.module("ui.router"));
+	beforeEach(window.module(uiRouter));
 	beforeEach(window.module(ErrorsModule));
 	beforeEach(window.module(HeaderModule));
 	beforeEach(window.module(ListModule));
 	// inject dependencies
 	beforeEach(inject(($injector) => {
-		Store = $injector.get("Store");
 		$rootScope = $injector.get("$rootScope");
 		$componentController = $injector.get("$componentController");
 		$state = $injector.get("$state");

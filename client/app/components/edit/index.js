@@ -5,7 +5,7 @@ import angular from "angular";
 import uiRouter from "angular-ui-router";
 // APP ----------------------------------
 import StoreService from "Common/store";
-import editForm from "Res/edit/form";
+import EditForm from "Res/edit/form";
 import editComponent from "./edit.component";
 
 
@@ -14,7 +14,7 @@ import editComponent from "./edit.component";
 const editModule = angular.module("edit", [
 	uiRouter,
 	StoreService,
-	editForm,
+	EditForm,
 ])
 	// config
 	.config(($stateProvider, $urlRouterProvider) => {

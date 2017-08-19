@@ -36,8 +36,7 @@ const paths = {
 	],
 	output: root,
 	blankTemplates: path.join(__dirname, "generator", "component/**/*.**"),
-	dest: "dist/**",
-	destExclude: "!dist/.git",
+	dest: path.join(__dirname, "dist"),
 };
 
 // use webpack.config.js to build modules
