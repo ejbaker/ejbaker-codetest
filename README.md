@@ -30,3 +30,6 @@ There are hidden fields to keep track of when resources were added/updated; it w
 * angular-utils-pagination: paginates the data
 * angular-uuid: for data querying
 * angular-ui-bootstrap: to reinvent the wheel sparingly (more of a general statement in this case, but I often imported this module when I was using AngularJS regularly :) )
+
+## Live Demo
+On [Github Pages](https://ejbaker.github.io/ejbaker-codetest/#!/)!
