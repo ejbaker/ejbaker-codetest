@@ -29,7 +29,7 @@ class ResourcesController {
 			{
 				label: "Name",
 				key: "name",
-				classes: !viewAll ? "col-xs-5 col-sm-5" : "col-xs-3 col-sm-4",
+				classes: !viewAll ? "col-xs-4 col-sm-5" : "col-xs-3 col-sm-4",
 			},
 			{
 				label: vm._$sce.trustAsHtml("Desc<span class=\"sr-only-sm-down\">ription</span>"),

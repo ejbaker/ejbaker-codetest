@@ -1,4 +1,4 @@
-<div  ng-class="{ 'col-xs-5 col-sm-5': $ctrl.recent, 'col-xs-3 col-sm-4': !$ctrl.recent }">
+<div  ng-class="{ 'col-xs-4 col-sm-5': $ctrl.recent, 'col-xs-3 col-sm-4': !$ctrl.recent }">
 	<a ng-if="$ctrl.hasLink" ng-href="{{ $ctrl.item.ref }}">{{ $ctrl.item.name }}</a>
 	<span ng-if="!$ctrl.hasLink">{{ $ctrl.item.name }}</span>
 	<span ng-if="$ctrl.item.author || $ctrl.item.creator"><i>by</i> {{ $ctrl.item.author || $ctrl.item.creator }}</span>
