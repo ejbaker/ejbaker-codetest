@@ -51,6 +51,7 @@ function viewBeforeEach() {
  * @method ctrlHasName
  */
 function ctrlHasName() {
+	controller.$onInit();
 	expect(controller).to.have.property("name");
 }
 
@@ -60,7 +61,7 @@ function ctrlHasName() {
  * @method viewHasTemplate
  */
 function viewHasTemplate() {
-	expect(template.find("div").find("a").html()).to.equal("Your Favorite Resources");
+	expect(template.find("div").find("a").html()).to.equal("Your <span class=\"sr-only-xs-down\">Favorite</span> Resources");
 }
 
 

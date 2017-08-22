@@ -1,3 +1,7 @@
+dir-pagination-controls {
+	display: block;
+	text-align: center;
+}
 .row {
 	vertical-align: top;
 	border-top: 1px solid #eceeef;
@@ -5,7 +9,9 @@
 		display: table-cell;
 		padding: 1rem .75rem;
 		&:nth-child(4) {
-			text-align: right;
+			> div:first-child {
+				text-align: right;
+			}
 		}
 	}
 }
@@ -20,13 +26,32 @@
 		}
 	}
 }
-dir-pagination-controls {
-	display: block;
-	text-align: center;
-}
 .caret.reverse {
 	content: "";
 	border-top: 0;
 	border-bottom: 4px dashed;
 	border-bottom: 4px solid\9;
+}
+
+@media (max-width: 400px) {
+	.row-header {
+		font-size: 1.1rem;
+	}
+}
+
+@media (max-width: 800px) {
+	.row {
+		> div:nth-child(4) {
+			> div {
+				width: 100%;
+				&:first-child {
+					text-align: left;
+				}
+				&:not(:first-child) {
+					margin-top: 5px;
+					clear: left;
+				}
+			}
+		}
+	}
 }

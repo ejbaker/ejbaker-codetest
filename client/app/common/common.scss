@@ -1,4 +1,31 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+$srOnlyResets: (
+	xs: 34em,
+	sm: 48em,
+	md: 62em,
+	lg: 75em
+);
+
+@each $breakpoint, $size in $srOnlyResets {
+	.sr-only-#{$breakpoint}-down {
+		position: absolute;
+		width: 1px; height: 1px;
+		padding: 0; margin: -1px;
+		overflow: hidden;
+		clip: rect(0,0,0,0);
+		border: 0;
+		@media (min-width: #{$size}) {
+			position: relative;
+			width: auto; height: auto;
+			padding: 0; margin: 0;
+			overflow: auto;
+			clip: initial;
+			border: 0;
+		}
+	}
+}
+
 $brand-primary:         darken(#428bca, 6.5%) !default; // #337ab7
 $brand-success:         #5cb85c !default;
 $brand-info:            #5bc0de !default;
@@ -6,3 +33,6 @@ $brand-warning:         #f0ad4e !default;
 $brand-danger:          #d9534f !default;
 
 $primaryColor: #6f5499;
+$lightPrimaryColor: lighten($primaryColor, 30%);
+$lighterPrimaryColor: lighten($primaryColor, 40%);
+$lightestPrimaryColor: lighten($primaryColor, 60%);

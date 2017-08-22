@@ -35,7 +35,7 @@ function ctrlHasName() {
  * @method ctrlHasTemplate
  */
 function ctrlHasTemplate() {
-	expect(HeaderTemplate).to.match(/{{\s?\$ctrl\.title\s?}}/g);
+	expect(HeaderTemplate).to.match(/{{\s?\$ctrl\.pageTitle\s?}}/g);
 }
 
 /**
@@ -77,7 +77,7 @@ describe("Header", () => {
 	});
 	// template
 	describe("Template", () => {
-		it("has name in template", ctrlHasTemplate);
+		it("has page title in template", ctrlHasTemplate);
 	});
 	// component
 	describe("Component", () => {

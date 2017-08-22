@@ -4,8 +4,9 @@
 	</div>
 	<div ng-if="$ctrl.items.length" class="row row-header">
 		<div ng-repeat="header in $ctrl.rowHeaders" class="{{ header.classes }}" ng-click="$ctrl.changeSort(header.key)">
-			{{ header.label }}
-			<span ng-show="$ctrl.sortType[0] === header.key" class="caret" ng-class="{ reverse: $ctrl.sortReverse }" aria-hidden="true"></span>
+			<span ng-if="header.key === 'desc'" ng-bind-html="header.label"></span>
+			<span ng-if="header.key !== 'desc'">{{ header.label }}</span>
+			<span ng-if="header.key" ng-show="$ctrl.sortType[0] === header.key" class="caret" ng-class="{ reverse: $ctrl.sortReverse }" aria-hidden="true"></span>
 		</div>
 	</div>
 	<resource class="row" dir-paginate="item in $ctrl.items | orderBy:$ctrl.sortType:$ctrl.sortReverse | itemsPerPage:3 track by item.id" item="item" type="$ctrl.type"></resource>

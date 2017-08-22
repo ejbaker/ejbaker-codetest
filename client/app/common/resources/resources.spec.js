@@ -1,5 +1,7 @@
 // DEPENDENCIES
 // =============================================================================
+// THIRD-PARTY ----------------------------------
+import ngSanitize from "angular-sanitize";
 // APP ----------------------------------
 import ResourcesModule from "./index";
 import ResourcesController from "./resources.controller";
@@ -9,7 +11,7 @@ import ResourcesTemplate from "./resources.html";
 
 // PROPERTIES
 // =============================================================================
-let makeController;
+let controller;
 const component = ResourcesComponent;
 
 
@@ -23,7 +25,6 @@ const component = ResourcesComponent;
  * @method ctrlHasName
  */
 function ctrlHasName() {
-	const controller = makeController();
 	controller.$onInit();
 	expect(controller).to.have.property("name");
 }
@@ -62,9 +63,13 @@ function compHasController() {
 
 describe("Resources", () => {
 	// before
+	beforeEach(window.module(ngSanitize));
 	beforeEach(window.module(ResourcesModule));
-	beforeEach(inject(() => {
-		makeController = () => (new ResourcesController());
+	beforeEach(inject((_$componentController_) => {
+		controller = _$componentController_("resources", null, {
+			items: [],
+			type: "recent",
+		});
 	}));
 	// module
 	describe("Module", () => {

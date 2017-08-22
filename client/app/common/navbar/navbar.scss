@@ -6,7 +6,7 @@ navbar {
 	a {
 		color: #fff;
 		&:hover {
-			color: lighten($primaryColor, 30%);
+			color: $lightPrimaryColor;
 		}
 	}
 	add-button {
@@ -17,7 +17,7 @@ navbar {
 	}
 	.active {
 		a {
-			background-color: lighten($primaryColor, 30%);
+			background-color: $lightPrimaryColor;
 		}
 	}
 	// overriding bootstrap's very specific styles
@@ -27,8 +27,22 @@ navbar {
 				&:hover,
 				&:focus {
 					color: $primaryColor;
-					background-color: lighten($primaryColor, 40%);
+					background-color: $lighterPrimaryColor;
 				}
+			}
+		}
+	}
+	.navbar-header {
+		.navbar-toggle {
+			border-color: #fff;
+			background-color: #fff;
+			&:focus,
+			&:hover {
+				background-color: $lightestPrimaryColor;
+				border-color: $lightestPrimaryColor;
+			}
+			.icon-bar {
+				background-color: $primaryColor;
 			}
 		}
 	}
